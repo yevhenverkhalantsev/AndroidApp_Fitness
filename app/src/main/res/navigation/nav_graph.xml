@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/registration">
+
+    <fragment
+        android:id="@+id/registration"
+        android:name="com.example.fitness.registration.FragmentRegistration"
+        android:label="fragment_registration"
+        tools:layout="@layout/fragment_registration" >
+        <action
+            android:id="@+id/action_registration_to_mainWindow"
+            app:destination="@id/mainWindow" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainWindow"
+        android:name="com.example.fitness.main_window.MainWindow"
+        android:label="fragment_main_window"
+        tools:layout="@layout/fragment_main_window" />
+</navigation>
