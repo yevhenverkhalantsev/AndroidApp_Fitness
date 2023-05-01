@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/registration"
-        android:name="com.example.fitness.registration.FragmentRegistration"
+        android:name="com.example.fitness.registration.RegistrationFragment"
         android:label="fragment_registration"
         tools:layout="@layout/fragment_registration" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/mainWindow"
-        android:name="com.example.fitness.main_window.MainWindow"
+        android:name="com.example.fitness.main_window.MainWindowFragment"
         android:label="fragment_main_window"
         tools:layout="@layout/fragment_main_window" />
 </navigation>
