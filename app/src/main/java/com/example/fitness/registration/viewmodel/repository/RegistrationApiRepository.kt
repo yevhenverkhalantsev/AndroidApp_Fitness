@@ -6,6 +6,7 @@ import javax.inject.Inject
 
 class RegistrationApiRepository @Inject constructor(private val apiService: ApiService) {
     suspend fun getUsers() = apiService.getUsers()
+    @Throws(Throwable::class)
     suspend fun putUser(user: User) = apiService.putUser(user)
 
 //        suspend fun getPhotos() = apiService.getPhotos()

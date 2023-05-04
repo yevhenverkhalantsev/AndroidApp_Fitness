@@ -2,4 +2,10 @@
     <string name="app_name">Fitness</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="phoneNumber">Telefonnummer</string>
+    <string name="register">Opprett profil</string>
+    <string name="error_phone_number_is_incorrect">Phone number is incorrect</string>
+    <string name="error_phone_number_is_already_registered">Phone number is already registered</string>
+    <string name="error_no_internet_connection">No internet connection</string>
+    <string name="error_unknown_try_again_later">Something went wrong, try again later</string>
 </resources>

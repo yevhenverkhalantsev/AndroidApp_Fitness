@@ -11,12 +11,32 @@
         android:label="fragment_registration"
         tools:layout="@layout/fragment_registration" >
         <action
-            android:id="@+id/action_registration_to_mainWindow"
-            app:destination="@id/mainWindow" />
+            android:id="@+id/action_registration_to_planFragment"
+            app:destination="@id/planFragment" />
     </fragment>
     <fragment
-        android:id="@+id/mainWindow"
-        android:name="com.example.fitness.main_window.MainWindowFragment"
-        android:label="fragment_main_window"
-        tools:layout="@layout/fragment_main_window" />
+        android:id="@+id/planFragment"
+        android:name="com.example.fitness.planfragment.PlanFragment"
+        android:label="fragment_plan"
+        tools:layout="@layout/fragment_plan" />
+    <fragment
+        android:id="@+id/activityFragment"
+        android:name="com.example.fitness.activities.ActivityFragment"
+        android:label="fragment_activity"
+        tools:layout="@layout/fragment_activity" />
+    <fragment
+        android:id="@+id/leaguesFragment"
+        android:name="com.example.fitness.leagues.LeaguesFragment"
+        android:label="fragment_leagues"
+        tools:layout="@layout/fragment_leagues" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.fitness.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/workoutsFragment"
+        android:name="com.example.fitness.workouts.WorkoutsFragment"
+        android:label="fragment_workouts"
+        tools:layout="@layout/fragment_workouts" />
 </navigation>

@@ -1,12 +1,10 @@
 package com.example.fitness.context.application
 
-import Blank2Fragment
 import android.app.Application
 import com.example.fitness.context.injection.AppModule
 import com.example.fitness.main_window.MainWindowFragment
 import com.example.fitness.registration.RegistrationFragment
 import com.example.fitness.retrofit.ApiModule
-import com.example.fitness.test1.Blank1Fragment
 import dagger.Component
 import javax.inject.Singleton
 
@@ -16,7 +14,7 @@ import javax.inject.Singleton
 interface AppComponent {
     fun inject(mainWindowFragment: MainWindowFragment)
     fun inject(registrationFragment: RegistrationFragment)
-//    fun inject(blank1Fragment: Blank1Fragment)
+//    fun inject(blank1Fragment: PlanFragment)
 //    fun inject(blank2Fragment: Blank2Fragment)
 }
 class MainApplication: Application() {
