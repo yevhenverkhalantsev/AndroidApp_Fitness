@@ -38,5 +38,23 @@
         android:id="@+id/workoutsFragment"
         android:name="com.example.fitness.workouts.WorkoutsFragment"
         android:label="fragment_workouts"
-        tools:layout="@layout/fragment_workouts" />
+        tools:layout="@layout/fragment_workouts" >
+        <action
+            android:id="@+id/action_workoutsFragment_to_exersicesFragment"
+            app:destination="@id/exersicesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/exersicesFragment"
+        android:name="com.example.fitness.exercises.ExersicesFragment"
+        android:label="fragment_exersices"
+        tools:layout="@layout/fragment_exersices" >
+        <action
+            android:id="@+id/action_exersicesFragment_to_descriptionExercisesFragment"
+            app:destination="@id/descriptionExercisesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/descriptionExercisesFragment"
+        android:name="com.example.fitness.description.DescriptionExercisesFragment"
+        android:label="fragment_description_exercises"
+        tools:layout="@layout/fragment_description_exercises" />
 </navigation>

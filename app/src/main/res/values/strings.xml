@@ -8,4 +8,45 @@
     <string name="error_phone_number_is_already_registered">Phone number is already registered</string>
     <string name="error_no_internet_connection">No internet connection</string>
     <string name="error_unknown_try_again_later">Something went wrong, try again later</string>
+    <string name="titleWorkout">Workouts</string>
+    <string name="categories">Categories</string>
+    <string name="getStarted">Get Started</string>
+    <string name="loseWeight">Lose Weight</string>
+    <string name="beachReady">Beach Ready</string>
+    <string name="getFit">Get Fit</string>
+
+    <string-array name="loose_weight_exercises">
+        <item>Push-ups</item>
+        <item>Sit-ups</item>
+        <item>Lungs</item>
+        <item>Squats</item>
+        <item>The plank</item>
+        <item>Outcome</item>
+        <item>Jumping jacks</item>
+        <item>Burpees</item>
+        <item>Mountain climbers</item>
+        <item>Jump squats</item>
+    </string-array>
+
+    <string-array name="description_of_loose_weight_exercises">
+        <item>Place your hands on the ground slightly wider than shoulder-width apart, and keep your body straight and tight with your toes on the ground. Slowly lower your body to the ground by bending your elbows, then push back up until your arms are extended. Repeat.
+        </item>
+        <item>Lie on your back with your knees bent and your feet on the ground. Place your hands behind your head and lift your head, neck and shoulders off the ground while tightening your abdominal muscles. Then slowly lower yourself back down and repeat.
+        </item>
+        <item>Stand with your feet shoulder-width apart, and take a step forward with one leg. Bend both knees and lower your body to the ground, then push back up to the starting position. Switch legs and repeat.
+        </item>
+        <item>Stand with your feet slightly wider than shoulder-width apart, then lower your body down as if you were going to sit on a chair. Keeping your back straight and your chest open, then push back up to the starting position.
+        </item>
+        <item>Lie on your stomach with your elbows bent and your forearms on the ground. Lift your body up and support your weight on your forearms and toes, keeping your body straight and tight. Hold this position for as long as possible.
+        </item>
+        <item>Stand with your feet shoulder-width apart, and take a step forward with one leg. Lower your body until your front knee is bent at a 90-degree angle and your back knee almost hits the ground. Then push back up to the starting position and switch legs.
+        </item>
+        <item>Stand with your feet together and your arms down by your sides. Then jump up and bounce your feet out while raising your arms out to the sides, then jump back to the starting position.
+        </item>
+        <item>Stand with your feet shoulder-width apart, then lower your body into a push-up position. Do a push-up, then jump up so that your feet land close to your hands. Stand up and jump with your arms above your head.
+        </item>
+        <item>Start in a plank position with elbows bent and forearms on the ground. Pull one knee up to your chest, then quickly switch to the other leg, as if you are "running" in a plank position.
+        </item>
+        <item>Stand with your feet slightly wider than shoulder width apart, and lower your body down as if you are going to sit on a chair. When you get back up, jump as high as possible and land softly back into the squat position. Repeat. This exercise can help improve strength and conditioning at the same time.s</item>
+    </string-array>
 </resources>

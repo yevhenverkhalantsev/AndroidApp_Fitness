@@ -1,14 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".workouts.WorkoutsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/title_workouts"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:text="@string/titleWorkout"
+        app:layout_constraintTop_toTopOf="@+id/parent"
+        app:layout_constraintStart_toStartOf="@+id/parent" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/categories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/categories"
+        app:layout_constraintTop_toBottomOf="@+id/title_workouts"
+        app:layout_constraintStart_toStartOf="@+id/parent" />
+
+    <ImageView
+        android:id="@+id/get_started_icon"
+        android:src="@drawable/getsatrted"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/categories"
+        app:layout_constraintStart_toStartOf="@+id/parent" />
+
+    <TextView
+        android:id="@+id/get_started"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:text="@string/getStarted"
+        app:layout_constraintBottom_toBottomOf="@+id/get_started_icon"
+        app:layout_constraintStart_toEndOf="@+id/get_started_icon"
+        app:layout_constraintTop_toTopOf="@+id/get_started_icon" />
+
+    <ImageView
+        android:id="@+id/lose_weight_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/loseweight"
+        android:text="@string/loseWeight"
+        app:layout_constraintStart_toStartOf="@+id/parent"
+        app:layout_constraintTop_toBottomOf="@+id/get_started_icon" />
+
+    <TextView
+        android:id="@+id/lose_weight"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:text="@string/loseWeight"
+        app:layout_constraintBottom_toBottomOf="@+id/lose_weight_icon"
+        app:layout_constraintStart_toEndOf="@+id/lose_weight_icon"
+        app:layout_constraintTop_toBottomOf="@+id/get_started_icon" />
+
+    <ImageView
+        android:id="@+id/beach_ready_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/beachready"
+        app:layout_constraintStart_toStartOf="@+id/parent"
+        app:layout_constraintTop_toBottomOf="@+id/lose_weight_icon" />
+
+    <TextView
+        android:id="@+id/beach_ready"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:text="@string/beachReady"
+        app:layout_constraintBottom_toBottomOf="@+id/beach_ready_icon"
+        app:layout_constraintStart_toEndOf="@+id/beach_ready_icon"
+        app:layout_constraintTop_toTopOf="@+id/beach_ready_icon" />
+
+    <ImageView
+        android:id="@+id/get_fit_icon"
+        android:src="@drawable/getfit"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/beach_ready_icon"
+        app:layout_constraintStart_toStartOf="@+id/parent" />
+
+    <TextView
+        android:id="@+id/get_fit"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:text="@string/getFit"
+        app:layout_constraintBottom_toBottomOf="@+id/get_fit_icon"
+        app:layout_constraintStart_toEndOf="@+id/get_fit_icon"
+        app:layout_constraintTop_toBottomOf="@+id/beach_ready_icon" />
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

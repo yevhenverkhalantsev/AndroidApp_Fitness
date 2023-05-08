@@ -1,14 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".planfragment.PlanFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/plan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Plan"
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/monday"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:text="M"
+        app:layout_constraintStart_toStartOf="@+id/parent"
+        app:layout_constraintTop_toBottomOf="@+id/plan" />
+
+    <TextView
+        android:id="@+id/tuesday"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:text="T"
+        app:layout_constraintStart_toEndOf="@+id/monday"
+        app:layout_constraintTop_toBottomOf="@+id/plan" />
+
+    <TextView
+        android:id="@+id/wednesday"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:text="W"
+        app:layout_constraintStart_toEndOf="@+id/tuesday"
+        app:layout_constraintTop_toBottomOf="@+id/plan" />
+
+    <TextView
+        android:id="@+id/thursday"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:text="T"
+        app:layout_constraintStart_toEndOf="@+id/wednesday"
+        app:layout_constraintTop_toBottomOf="@+id/plan"/>
+
+    <TextView
+        android:id="@+id/friday"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:text="F"
+        app:layout_constraintStart_toEndOf="@+id/thursday"
+        app:layout_constraintTop_toBottomOf="@+id/plan" />
+
+    <TextView
+        android:id="@+id/saturday"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:text="S"
+        app:layout_constraintStart_toEndOf="@+id/friday"
+        app:layout_constraintTop_toBottomOf="@+id/plan" />
+
+    <TextView
+        android:id="@+id/sunday"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:text="S"
+        app:layout_constraintStart_toEndOf="@+id/saturday"
+        app:layout_constraintTop_toBottomOf="@+id/plan" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
