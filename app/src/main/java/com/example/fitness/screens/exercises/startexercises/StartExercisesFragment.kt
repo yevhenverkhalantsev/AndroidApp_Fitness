@@ -1,4 +1,4 @@
-package com.example.fitness.startexercises
+package com.example.fitness.screens.exercises.startexercises
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

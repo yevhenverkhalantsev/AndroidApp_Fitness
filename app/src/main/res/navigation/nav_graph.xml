@@ -36,7 +36,7 @@
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/workoutsFragment"
-        android:name="com.example.fitness.workouts.WorkoutsFragment"
+        android:name="com.example.fitness.screens.exercises.workouts.WorkoutsFragment"
         android:label="fragment_workouts"
         tools:layout="@layout/fragment_workouts" >
         <action
@@ -45,16 +45,31 @@
     </fragment>
     <fragment
         android:id="@+id/exersicesFragment"
-        android:name="com.example.fitness.exercises.ExersicesFragment"
+        android:name="com.example.fitness.screens.exercises.exercises.view.ExersicesFragment"
         android:label="fragment_exersices"
         tools:layout="@layout/fragment_exersices" >
         <action
             android:id="@+id/action_exersicesFragment_to_descriptionExercisesFragment"
             app:destination="@id/descriptionExercisesFragment" />
+        <action
+            android:id="@+id/action_exersicesFragment_to_performingExercisesFragment"
+            app:destination="@id/performingExercisesFragment" />
     </fragment>
     <fragment
         android:id="@+id/descriptionExercisesFragment"
-        android:name="com.example.fitness.description.DescriptionExercisesFragment"
+        android:name="com.example.fitness.description.view.DescriptionExercisesFragment"
         android:label="fragment_description_exercises"
-        tools:layout="@layout/fragment_description_exercises" />
+        tools:layout="@layout/fragment_description_exercises" >
+        <action
+            android:id="@+id/action_descriptionExercisesFragment_self"
+            app:destination="@id/descriptionExercisesFragment" />
+        <action
+            android:id="@+id/action_descriptionExercisesFragment_to_exersicesFragment"
+            app:destination="@id/exersicesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/performingExercisesFragment"
+        android:name="com.example.fitness.screens.exercises.exercisePerforming.view.PerformingExercisesFragment"
+        android:label="fragment_performing_exercises"
+        tools:layout="@layout/fragment_performing_exercises" />
 </navigation>

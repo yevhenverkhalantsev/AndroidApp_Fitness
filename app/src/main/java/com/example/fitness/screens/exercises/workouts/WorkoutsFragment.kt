@@ -1,4 +1,4 @@
-package com.example.fitness.workouts
+package com.example.fitness.screens.exercises.workouts
 
 import android.content.Context
 import android.os.Bundle
@@ -9,10 +9,9 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.fitness.R
 import com.example.fitness.context.application.MainApplication
-import com.example.fitness.databinding.FragmentRegistrationBinding
 import com.example.fitness.databinding.FragmentWorkoutsBinding
-import com.example.fitness.workouts.model.Category
-import com.example.fitness.workouts.viewmodel.ExercisesViewModel
+import com.example.fitness.screens.exercises.workouts.model.Category
+import com.example.fitness.screens.exercises.workouts.viewmodel.ExercisesViewModel
 import javax.inject.Inject
 
 class WorkoutsFragment : Fragment() {
@@ -37,19 +36,10 @@ class WorkoutsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentWorkoutsBinding.bind(view)
-
-
-        viewModel = ExercisesViewModel()
         initListeners()
     }
 
     private fun initListeners() {
-        binding.beachReady.setOnClickListener {
-            moveToNextFragment(Category.BEACH_READY)
-        }
-        binding.beachReadyIcon.setOnClickListener {
-            moveToNextFragment(Category.BEACH_READY)
-        }
 
         binding.loseWeight.setOnClickListener {
             moveToNextFragment(Category.LOSE_WEIGHT)

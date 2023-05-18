@@ -1,7 +1,7 @@
-package com.example.fitness.workouts.viewmodel
+package com.example.fitness.screens.exercises.workouts.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.example.fitness.workouts.model.Category
+import com.example.fitness.screens.exercises.workouts.model.Category
 import javax.inject.Inject
 import javax.inject.Singleton
 

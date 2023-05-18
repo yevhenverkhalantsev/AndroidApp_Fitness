@@ -2,12 +2,13 @@ package com.example.fitness.context.application
 
 import android.app.Application
 import com.example.fitness.context.injection.AppModule
-import com.example.fitness.description.DescriptionExercisesFragment
-import com.example.fitness.exercises.ExersicesFragment
+import com.example.fitness.description.view.DescriptionExercisesFragment
+import com.example.fitness.screens.exercises.exercises.view.ExersicesFragment
 import com.example.fitness.main_window.MainWindowFragment
 import com.example.fitness.registration.RegistrationFragment
 import com.example.fitness.retrofit.ApiModule
-import com.example.fitness.workouts.WorkoutsFragment
+import com.example.fitness.screens.exercises.exercisePerforming.view.PerformingExercisesFragment
+import com.example.fitness.screens.exercises.workouts.WorkoutsFragment
 import dagger.Component
 import javax.inject.Singleton
 
@@ -22,6 +23,8 @@ interface AppComponent {
     fun inject(registrationFragment: RegistrationFragment)
 //    fun inject(blank1Fragment: PlanFragment)
 //    fun inject(blank2Fragment: Blank2Fragment)
+
+    fun inject(performingExercisesFragment: PerformingExercisesFragment)
 }
 class MainApplication: Application() {
 
