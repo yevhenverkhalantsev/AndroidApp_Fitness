@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.fitness.R
-import com.example.fitness.context.application.MainApplication
+import com.example.fitness.screens.context.application.MainApplication
 import com.example.fitness.databinding.FragmentWorkoutsBinding
 import com.example.fitness.screens.exercises.workouts.model.Category
 import com.example.fitness.screens.exercises.workouts.viewmodel.ExercisesViewModel
@@ -21,7 +21,7 @@ class WorkoutsFragment : Fragment() {
     @Inject lateinit var viewModel: ExercisesViewModel
 
     override fun onAttach(context: Context) {
-        (requireActivity().applicationContext as MainApplication).appComponent.inject(this)
+        //(requireActivity().applicationContext as MainApplication).appComponent.inject(this)
         super.onAttach(context)
     }
 

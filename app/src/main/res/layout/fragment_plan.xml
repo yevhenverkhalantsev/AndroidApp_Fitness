@@ -21,8 +21,8 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:text="M"
-        app:layout_constraintStart_toStartOf="@+id/parent"
-        app:layout_constraintTop_toBottomOf="@+id/plan" />
+        app:layout_constraintTop_toBottomOf="@+id/plan"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tuesday"
@@ -71,5 +71,14 @@
         android:text="S"
         app:layout_constraintStart_toEndOf="@+id/saturday"
         app:layout_constraintTop_toBottomOf="@+id/plan" />
+
+    <TextView
+        android:id="@+id/countdown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/monday"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

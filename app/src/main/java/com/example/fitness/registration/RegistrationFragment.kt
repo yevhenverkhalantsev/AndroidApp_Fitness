@@ -8,31 +8,31 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.fitness.R
-import com.example.fitness.context.activity.MainActivity
-import com.example.fitness.context.application.MainApplication
+import com.example.fitness.screens.context.activity.MainActivity
+import com.example.fitness.screens.context.application.MainApplication
 import com.example.fitness.databinding.FragmentRegistrationBinding
 import com.example.fitness.registration.model.Resource
 import com.example.fitness.registration.model.User
 import com.example.fitness.registration.viewmodel.OnExceptionHandler
 import com.example.fitness.registration.viewmodel.RegistrationViewModel
 import com.example.fitness.utils.Utils
+import dagger.android.support.DaggerFragment
 import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 
-class RegistrationFragment:  Fragment(), OnExceptionHandler {
+class RegistrationFragment:  DaggerFragment(), OnExceptionHandler {
 
-    @Inject lateinit var viewModel: RegistrationViewModel
-
+    @Inject lateinit var factory: ViewModelProvider.Factory
+    val viewModel: RegistrationViewModel by activityViewModels(factoryProducer = { factory } )
     private var _binding: FragmentRegistrationBinding? = null
     private val binding get() = _binding!!
 
-    override fun onAttach(context: Context) {
-        (requireContext().applicationContext as MainApplication).appComponent.inject(this)
-        super.onAttach(context)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

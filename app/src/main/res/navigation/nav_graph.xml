@@ -71,5 +71,9 @@
         android:id="@+id/performingExercisesFragment"
         android:name="com.example.fitness.screens.exercises.exercisePerforming.view.PerformingExercisesFragment"
         android:label="fragment_performing_exercises"
-        tools:layout="@layout/fragment_performing_exercises" />
+        tools:layout="@layout/fragment_performing_exercises" >
+        <action
+            android:id="@+id/action_performingExercisesFragment_self"
+            app:destination="@id/performingExercisesFragment" />
+    </fragment>
 </navigation>

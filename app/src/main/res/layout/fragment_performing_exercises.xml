@@ -1,14 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blue"
+    android:id="@+id/mainLayout"
     tools:context=".screens.exercises.exercisePerforming.view.PerformingExercisesFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/amount_from_amount"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/amount_from_amount"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/exercise_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/amount_from_amount" />
+
+    <ImageView
+        android:id="@+id/exercise_image"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        app:layout_constraintBottom_toBottomOf="@id/exerciseProgressBar"
+        app:layout_constraintEnd_toEndOf="@id/exerciseProgressBar"
+        app:layout_constraintStart_toStartOf="@id/exerciseProgressBar"
+        app:layout_constraintTop_toTopOf="@id/exerciseProgressBar" />
+
+    <ProgressBar
+        android:id="@+id/exerciseProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="360dp"
+        android:layout_height="360dp"
+        android:background="@drawable/exercise_progress_bar_background"
+        android:progressDrawable="@drawable/exercise_progress_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/exercise_name" />
+
+    <TextView
+        android:id="@+id/timeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="@id/exerciseProgressBar"
+        app:layout_constraintStart_toStartOf="@id/exerciseProgressBar"
+        app:layout_constraintTop_toBottomOf="@id/exerciseProgressBar" />
+
+    <ImageView
+        android:id="@+id/repeatexercise"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/repeat"
+        app:layout_constraintEnd_toStartOf="@+id/playexercise"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/playexercise" />
+
+    <ImageView
+        android:id="@+id/playexercise"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/play"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/nextexercise"
+        app:layout_constraintStart_toEndOf="@+id/repeatexercise"
+        app:layout_constraintTop_toBottomOf="@id/timeText" />
+
+    <ImageView
+        android:id="@+id/nextexercise"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/next"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/playexercise"
+        app:layout_constraintTop_toTopOf="@id/playexercise" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerviewtostartexercises"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/repeatexercise" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

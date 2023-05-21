@@ -10,14 +10,14 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitness.R
-import com.example.fitness.context.application.MainApplication
+import com.example.fitness.screens.context.application.MainApplication
 import com.example.fitness.databinding.FragmentExersicesBinding
 import com.example.fitness.screens.exercises.exercises.model.Exercise
 import com.example.fitness.screens.exercises.exercises.view.adapter.ExercisesRecyclerAdapter
-import com.example.fitness.utils.ExercisesManager
 import com.example.fitness.utils.Utils
 import com.example.fitness.utils.interfaces.OnItemClickListener
 import com.example.fitness.screens.exercises.workouts.viewmodel.ExercisesViewModel
+import com.example.fitness.utils.ExerciseManager
 import javax.inject.Inject
 
 class ExersicesFragment : Fragment(), OnItemClickListener {
@@ -25,10 +25,11 @@ class ExersicesFragment : Fragment(), OnItemClickListener {
     private val binding get() = _binding!!
     private lateinit var exercises: List<Exercise>
     @Inject lateinit var viewModel: ExercisesViewModel
+    @Inject lateinit var exercisesManager: ExerciseManager
     private val exerciseAdapter: ExercisesRecyclerAdapter by lazy { ExercisesRecyclerAdapter(this) }
 
     override fun onAttach(context: Context) {
-        (requireActivity().applicationContext as MainApplication).appComponent.inject(this)
+        //(requireActivity().applicationContext as MainApplication).appComponent.inject(this)
         super.onAttach(context)
     }
 
@@ -53,6 +54,13 @@ class ExersicesFragment : Fragment(), OnItemClickListener {
         binding.startButton.setOnClickListener {
             findNavController().navigate(R.id.action_exersicesFragment_to_performingExercisesFragment)
         }
+        binding.addExercises.setOnClickListener {
+            addExercisesToCurrentUser()
+        }
+    }
+
+    private fun addExercisesToCurrentUser() {
+        viewModel.saveUserProgram() //@TODO
     }
 
     private fun setRecyclerView() {
@@ -70,7 +78,7 @@ class ExersicesFragment : Fragment(), OnItemClickListener {
 
     private fun getExercises() {
         //@TODO
-        exercises = ExercisesManager.getExercises(requireContext(), viewModel.selectedCategory)
+        exercises = exercisesManager.getExercises(viewModel.selectedCategory)
         Log.i("kelo", "exercise = $exercises")
     }
 

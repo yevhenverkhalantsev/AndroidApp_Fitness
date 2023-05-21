@@ -9,14 +9,14 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitness.R
-import com.example.fitness.context.application.MainApplication
+import com.example.fitness.screens.context.application.MainApplication
 import com.example.fitness.databinding.FragmentDescriptionExercisesBinding
 import com.example.fitness.description.model.ExerciseWithDescription
 import com.example.fitness.description.view.adapter.DescriptionExercisesRecyclerAdapter
-import com.example.fitness.utils.ExercisesManager
 import com.example.fitness.utils.Utils
 import com.example.fitness.utils.interfaces.OnItemClickListener
 import com.example.fitness.screens.exercises.workouts.viewmodel.ExercisesViewModel
+import com.example.fitness.utils.ExerciseManager
 import javax.inject.Inject
 
 class DescriptionExercisesFragment : Fragment() {
@@ -25,6 +25,7 @@ class DescriptionExercisesFragment : Fragment() {
     private lateinit var exerciseDescription: String
     private lateinit var exerciseName: String
     @Inject lateinit var viewModel: ExercisesViewModel
+    @Inject lateinit var exerciseManager: ExerciseManager
     private lateinit var exercise: ExerciseWithDescription
     private var exercise_number: Int = -1
 
@@ -33,7 +34,7 @@ class DescriptionExercisesFragment : Fragment() {
 
 
     override fun onAttach(context: Context) {
-        (requireActivity().applicationContext as MainApplication).appComponent.inject(this)
+        //(requireActivity().applicationContext as MainApplication).appComponent.inject(this)
         super.onAttach(context)
     }
 
@@ -67,7 +68,7 @@ class DescriptionExercisesFragment : Fragment() {
     }
 
     private fun setAdapterData() {
-        exercisesAdapter.exercises = ExercisesManager.getExercises(requireContext(), viewModel.selectedCategory)
+        exercisesAdapter.exercises = exerciseManager.getExercises(viewModel.selectedCategory)
         binding.numberExercises.text = getString(R.string.amount_from_amount, exercise_number + 1, exercisesAdapter.exercises.size)
     }
 
@@ -90,7 +91,7 @@ class DescriptionExercisesFragment : Fragment() {
 
     private fun getExerciseInfo() {
         exercise_number = requireArguments().getInt(Utils.exerciseKeyID)
-        exercise = ExercisesManager.getExercisesWithDescription(requireContext(), viewModel.selectedCategory, exercise_number)
+        exercise = exerciseManager.getExercisesWithDescription(viewModel.selectedCategory, exercise_number)
         showExerciseInfo()
     }
 

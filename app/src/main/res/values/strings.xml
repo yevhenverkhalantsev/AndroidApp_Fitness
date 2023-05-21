@@ -14,10 +14,13 @@
     <string name="loseWeight">Lose Weight</string>
     <string name="beachReady">Beach Ready</string>
     <string name="getFit">Get Fit</string>
-    <string name="numberexercises">1 0f 10</string>
     <string name="exercises">Exercises</string>
     <string name="start">Start workout</string>
     <string name="amount_from_amount">%1$d\\%2$d</string>
+    <string name="timeset">15</string>
+    <string name="next_exrcise_placeholder">Next exercise: %1$s</string>
+    <string name="rest">Rest</string>
+    <string name="exercise_finished">Exercises finished!</string>
 
     <string-array name="loose_weight_exercises">
         <item>Push-ups</item>
