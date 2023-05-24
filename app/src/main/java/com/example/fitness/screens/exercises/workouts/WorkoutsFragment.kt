@@ -6,19 +6,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.fitness.R
 import com.example.fitness.screens.context.application.MainApplication
 import com.example.fitness.databinding.FragmentWorkoutsBinding
 import com.example.fitness.screens.exercises.workouts.model.Category
 import com.example.fitness.screens.exercises.workouts.viewmodel.ExercisesViewModel
+import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class WorkoutsFragment : Fragment() {
+class WorkoutsFragment : DaggerFragment() {
 
     private var _binding: FragmentWorkoutsBinding? = null
     private val binding get() = _binding!!
-    @Inject lateinit var viewModel: ExercisesViewModel
+    @Inject lateinit var factory: ViewModelProvider.Factory
+    private val viewModel: ExercisesViewModel by activityViewModels( factoryProducer = { factory } )
 
     override fun onAttach(context: Context) {
         //(requireActivity().applicationContext as MainApplication).appComponent.inject(this)

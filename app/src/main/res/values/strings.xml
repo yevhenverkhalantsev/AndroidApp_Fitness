@@ -21,6 +21,9 @@
     <string name="next_exrcise_placeholder">Next exercise: %1$s</string>
     <string name="rest">Rest</string>
     <string name="exercise_finished">Exercises finished!</string>
+    <string name="login">logg inn</string>
+    <string name="alreadyHaveAnAccount">Har du registrert?</string>
+    <string name="welcome">Velkommen til Fitness app</string>
 
     <string-array name="loose_weight_exercises">
         <item>Push-ups</item>
@@ -34,6 +37,8 @@
         <item>Mountain climbers</item>
         <item>Jump squats</item>
     </string-array>
+
+
 
 
     <string-array name="description_of_loose_weight_exercises">
@@ -166,5 +171,37 @@
         </item>
     </string-array>
 
+
+    <string-array name="get_started">
+        <item>Get Started</item>
+    </string-array>
+
+    <string-array name="lose_weight">
+        <item>Lose Weight</item>
+    </string-array>
+
+    <string-array name="beach_ready">
+        <item>Beach Ready</item>
+    </string-array>
+
+    <string-array name="get_fit">
+        <item>Get Fit</item>
+    </string-array>
+
+    <string-array name="get_started_description">
+    <item>This workout is designed to get you started on your fitness journey.</item>
+    </string-array>
+
+    <string-array name="lose_weight_description">
+    <item>This workout is designed to help you lose weight.</item>
+    </string-array>
+
+    <string-array name="beach_ready_description">
+    <item>This workout is designed to get you ready for the beach.</item>
+    </string-array>
+
+    <string-array name="get_fit_description">
+    <item>This workout is designed to help you get fit.</item>
+    </string-array>
 
 </resources>

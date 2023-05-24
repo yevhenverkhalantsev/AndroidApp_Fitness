@@ -11,9 +11,6 @@ import javax.inject.Inject
 
 class MainWindowFragment : Fragment() {
 
-    @Inject
-    lateinit var viewModel: RegistrationViewModel
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

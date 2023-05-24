@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".screens.exercises.exercises.view.ExersicesFragment">
+    tools:context=".screens.exercises.someother.view.ExercisesFragment">
 
     <ImageView
         android:id="@+id/back_arrow"
@@ -18,15 +18,14 @@
         android:id="@+id/title_workouts"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text="@string/getStarted"
-        app:layout_constraintTop_toTopOf="@id/back_arrow"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/back_arrow" />
 
     <ImageView
         android:id="@+id/image_workouts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/loseweight"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_workouts" />
 

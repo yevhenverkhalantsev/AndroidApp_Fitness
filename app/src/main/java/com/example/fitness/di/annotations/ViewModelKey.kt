@@ -1,4 +1,4 @@
-package com.example.fitness.screens.context.injection.annotations
+package com.example.fitness.di.annotations
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

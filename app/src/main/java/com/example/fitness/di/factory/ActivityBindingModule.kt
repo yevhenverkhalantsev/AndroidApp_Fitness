@@ -1,4 +1,4 @@
-package com.example.fitness.screens.context.injection.factory
+package com.example.fitness.di.factory
 
 import com.example.fitness.screens.context.activity.MainActivity
 import dagger.Module

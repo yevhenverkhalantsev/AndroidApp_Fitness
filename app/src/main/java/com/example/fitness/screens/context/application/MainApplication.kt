@@ -2,13 +2,14 @@ package com.example.fitness.screens.context.application
 
 import android.content.Context
 import com.example.fitness.description.view.DescriptionExercisesFragment
-import com.example.fitness.screens.exercises.exercises.view.ExersicesFragment
+import com.example.fitness.screens.exercises.someother.view.ExercisesFragment
 import com.example.fitness.main_window.MainWindowFragment
 import com.example.fitness.registration.RegistrationFragment
 import com.example.fitness.retrofit.ApiModule
-import com.example.fitness.screens.context.injection.annotations.ApplicationContext
-import com.example.fitness.screens.context.injection.factory.ActivityBindingModule
-import com.example.fitness.screens.context.injection.factory.ViewModelModule
+import com.example.fitness.di.annotations.ApplicationContext
+import com.example.fitness.di.factory.ActivityBindingModule
+import com.example.fitness.di.factory.ViewModelModule
+import com.example.fitness.di.modules.UtilsModule
 import com.example.fitness.screens.exercises.exercisePerforming.view.PerformingExercisesFragment
 import com.example.fitness.screens.exercises.workouts.WorkoutsFragment
 import dagger.BindsInstance
@@ -34,7 +35,7 @@ interface AppComponent: AndroidInjector<MainApplication> {
         fun create(@BindsInstance @ApplicationContext context: Context): AppComponent
     }
     fun inject(descriptionExersicesFragment: DescriptionExercisesFragment)
-    fun inject(exercisesFragment: ExersicesFragment)
+    fun inject(exercisesFragment: ExercisesFragment)
     fun inject(workoutsFragment: WorkoutsFragment)
     fun inject(mainWindowFragment: MainWindowFragment)
     fun inject(registrationFragment: RegistrationFragment)

@@ -1,14 +1,13 @@
-package com.example.fitness.screens.exercises.exercises.model
+package com.example.fitness.screens.exercises.someother.model
 
-import android.graphics.drawable.Drawable
 import com.example.fitness.screens.exercises.exercisePerforming.model.ExerciseInterval
 
 data class Exercise(
-        val exercise_image: Drawable,
+        val exercise_image: Int,
         val exercise_name: String,
     )
 
-data class DatabaseExercise(
+data class UserExerciseUI(
     val name: String,
     val imageId: Int,
     val description: String,

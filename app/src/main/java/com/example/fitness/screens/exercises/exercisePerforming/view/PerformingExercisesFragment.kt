@@ -10,6 +10,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.fitness.R
 import com.example.fitness.databinding.FragmentPerformingExercisesBinding
@@ -23,8 +25,9 @@ import javax.inject.Inject
 class PerformingExercisesFragment : Fragment() {
     private var _binding : FragmentPerformingExercisesBinding? = null
     private val binding get() = _binding!!
-    private val performingViewModel : PerformingViewModel by lazy { PerformingViewModel() }
-    @Inject lateinit var viewModel: ExercisesViewModel
+    //private val performingViewModel : PerformingViewModel by lazy { PerformingViewModel() }
+    @Inject lateinit var factory: ViewModelProvider.Factory
+    private val viewModel: ExercisesViewModel by activityViewModels( factoryProducer = { factory } )
     @Inject lateinit var exercisesManager: ExerciseManager
     private val performingExercises: List<PerformingExercise>
         by lazy { exercisesManager.getPerformingExercises(viewModel.selectedCategory) }
@@ -102,7 +105,8 @@ class PerformingExercisesFragment : Fragment() {
                 getString(R.string.amount_from_amount, currentExerciseId+1, performingExercises.size)
             binding.exerciseName.text =
                 performingExercises[currentExerciseId].exercise.exercise_name
-            binding.exerciseImage.setImageDrawable(performingExercises[currentExerciseId].exercise.exercise_image)
+            binding.exerciseImage.setImageDrawable(AppCompatResources.getDrawable(requireContext(),
+                performingExercises[currentExerciseId].exercise.exercise_image))
             binding.exerciseProgressBar.max =
                 performingExercises[currentExerciseId].time.performingTime
             binding.exerciseProgressBar.progress = 0

@@ -6,6 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitness.R
@@ -24,7 +27,8 @@ class DescriptionExercisesFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var exerciseDescription: String
     private lateinit var exerciseName: String
-    @Inject lateinit var viewModel: ExercisesViewModel
+    @Inject lateinit var factory: ViewModelProvider.Factory
+    private val viewModel: ExercisesViewModel by activityViewModels( factoryProducer = { factory } )
     @Inject lateinit var exerciseManager: ExerciseManager
     private lateinit var exercise: ExerciseWithDescription
     private var exercise_number: Int = -1
@@ -83,7 +87,7 @@ class DescriptionExercisesFragment : Fragment() {
     }
 
     private fun showExerciseInfo() {
-        binding.imageExercises.setImageDrawable(exercise.exercise.exercise_image)
+        binding.imageExercises.setImageDrawable(AppCompatResources.getDrawable(requireContext(), exercise.exercise.exercise_image))
         binding.nameExercises.text = exercise.exercise.exercise_name
         binding.descriptionExercises.text = exercise.description.joinToString(prefix = "\n-", separator = "\n-").removeSuffix("\n-")
         //@TODO init adapter for recycler view

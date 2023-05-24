@@ -1,4 +1,4 @@
-package com.example.fitness.screens.context.injection.annotations
+package com.example.fitness.di.annotations
 
 @Retention(AnnotationRetention.RUNTIME)
 annotation class ApplicationContext

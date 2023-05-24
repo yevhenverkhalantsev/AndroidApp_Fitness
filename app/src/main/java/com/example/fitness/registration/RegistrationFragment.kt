@@ -20,6 +20,7 @@ import com.example.fitness.registration.model.Resource
 import com.example.fitness.registration.model.User
 import com.example.fitness.registration.viewmodel.OnExceptionHandler
 import com.example.fitness.registration.viewmodel.RegistrationViewModel
+import com.example.fitness.utils.UserManager
 import com.example.fitness.utils.Utils
 import dagger.android.support.DaggerFragment
 import retrofit2.HttpException
@@ -29,7 +30,7 @@ import javax.inject.Inject
 class RegistrationFragment:  DaggerFragment(), OnExceptionHandler {
 
     @Inject lateinit var factory: ViewModelProvider.Factory
-    val viewModel: RegistrationViewModel by activityViewModels(factoryProducer = { factory } )
+    private val viewModel: RegistrationViewModel by activityViewModels(factoryProducer = { factory } )
     private var _binding: FragmentRegistrationBinding? = null
     private val binding get() = _binding!!
 
@@ -57,6 +58,7 @@ class RegistrationFragment:  DaggerFragment(), OnExceptionHandler {
             (requireActivity() as MainActivity).hideBottomNavigationView()
             return
         }
+        UserManager.userId = userId
         moveToNextFragment()
     }
 
@@ -110,6 +112,7 @@ class RegistrationFragment:  DaggerFragment(), OnExceptionHandler {
                 is Resource.Success<*> -> {
                     if (it.element is User) {
                         saveCurrentLoginnedUser(it.element)
+                        UserManager.userId = it.element.id
                     }
                     //TODO Show Success animation and went to second fragment
                     moveToNextFragment()

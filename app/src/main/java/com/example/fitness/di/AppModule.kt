@@ -1,4 +1,4 @@
-package com.example.fitness.screens.context.injection
+package com.example.fitness.di
 
 //@Module
 //class AppModule(private val mApplication: Application){

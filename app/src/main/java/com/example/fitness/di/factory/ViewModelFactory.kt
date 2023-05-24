@@ -1,4 +1,4 @@
-package com.example.fitness.screens.context.injection.factory
+package com.example.fitness.di.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

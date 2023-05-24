@@ -6,9 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitness.R
-import com.example.fitness.screens.exercises.exercises.model.Exercise
+import com.example.fitness.screens.exercises.someother.model.Exercise
 import com.example.fitness.utils.interfaces.OnItemClickListener
 
 class DescriptionExercisesRecyclerAdapter(private val onItemClickListener: OnItemClickListener) : RecyclerView.Adapter<DescriptionExercisesRecyclerAdapter.ExerciseViewHolder>() {
@@ -38,7 +39,7 @@ class DescriptionExercisesRecyclerAdapter(private val onItemClickListener: OnIte
         Log.i("krembolin", "items = $exercises")
         val exercise = exercises[position]
         holder.exercise_name.text = exercise.exercise_name
-        holder.exercise_image.setImageDrawable(exercise.exercise_image)
+        holder.exercise_image.setImageDrawable(AppCompatResources.getDrawable(holder.itemView.context, exercise.exercise_image))
         holder.itemView.setOnClickListener { onItemClickListener.onItemClick(position) }
 
     }

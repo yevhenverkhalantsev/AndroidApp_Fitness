@@ -1,32 +1,48 @@
-package com.example.fitness.screens.exercises.exercises.view
+package com.example.fitness.screens.exercises.someother.view
 
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.view.isVisible
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitness.R
-import com.example.fitness.screens.context.application.MainApplication
 import com.example.fitness.databinding.FragmentExersicesBinding
-import com.example.fitness.screens.exercises.exercises.model.Exercise
-import com.example.fitness.screens.exercises.exercises.view.adapter.ExercisesRecyclerAdapter
+import com.example.fitness.domain.model.RemoteResource
+import com.example.fitness.domain.model.UserProgramUI
+import com.example.fitness.screens.exercises.someother.model.Exercise
+import com.example.fitness.screens.exercises.someother.model.UserExerciseUI
+import com.example.fitness.screens.exercises.someother.view.adapter.ExercisesRecyclerAdapter
 import com.example.fitness.utils.Utils
 import com.example.fitness.utils.interfaces.OnItemClickListener
 import com.example.fitness.screens.exercises.workouts.viewmodel.ExercisesViewModel
 import com.example.fitness.utils.ExerciseManager
+import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class ExersicesFragment : Fragment(), OnItemClickListener {
+class ExercisesFragment : DaggerFragment() {
+    //class ExercisesFragment : DaggerFragment(), OnItemClickListener {
     private var _binding: FragmentExersicesBinding? = null
     private val binding get() = _binding!!
     private lateinit var exercises: List<Exercise>
-    @Inject lateinit var viewModel: ExercisesViewModel
-    @Inject lateinit var exercisesManager: ExerciseManager
-    private val exerciseAdapter: ExercisesRecyclerAdapter by lazy { ExercisesRecyclerAdapter(this) }
+
+    @Inject lateinit var factory: ViewModelProvider.Factory
+    private val viewModel: ExercisesViewModel by activityViewModels( factoryProducer = { factory } )
+//    @Inject lateinit var exercisesManager: ExerciseManager
+    @Inject lateinit var exercisesManager : ExerciseManager //= ExerciseManager(requireContext())
+
+    private val exerciseAdapter: ExercisesRecyclerAdapter by lazy { ExercisesRecyclerAdapter(object : OnItemClickListener {
+        override fun onItemClick(position: Int) {
+            showExerciseDescription(position)
+        }
+
+    }) }
 
     override fun onAttach(context: Context) {
         //(requireActivity().applicationContext as MainApplication).appComponent.inject(this)
@@ -37,6 +53,9 @@ class ExersicesFragment : Fragment(), OnItemClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+//        exercisesManager = ExerciseManager(requireContext())
+//        viewModel = ExercisesViewModel(exerciseManager = exercisesManager, remoteDatabaseRepository = ExercisesRemoteRepository())
+//        viewModel.selectedCategory = Category.LOSE_WEIGHT
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_exersices, container, false)
     }
@@ -57,10 +76,34 @@ class ExersicesFragment : Fragment(), OnItemClickListener {
         binding.addExercises.setOnClickListener {
             addExercisesToCurrentUser()
         }
+
+        viewModel.savingState.observe(viewLifecycleOwner) {
+            handleSaveResult(it)
+        }
+    }
+
+    private fun handleSaveResult(result: RemoteResource) {
+        when (result) {
+            is RemoteResource.OnConflict -> showOnConflict(result.message)
+            //@TODO
+            else -> {
+                Toast.makeText(requireContext(), "", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun showOnConflict(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+        binding.addExercises.visibility = View.GONE
     }
 
     private fun addExercisesToCurrentUser() {
-        viewModel.saveUserProgram() //@TODO
+        viewModel.saveUserProgram(
+            UserProgramUI(
+                name = viewModel.selectedCategory.nameResourceId.toString(),
+                exercises = exercisesManager.getDatabaseExercises(viewModel.selectedCategory),
+                icon = exercisesManager.getProgramIcon(viewModel.selectedCategory)
+            ))
     }
 
     private fun setRecyclerView() {
@@ -88,8 +131,8 @@ class ExersicesFragment : Fragment(), OnItemClickListener {
         super.onDestroyView()
     }
 
-    override fun onItemClick(position: Int) {
-        showExerciseDescription(position)
-    }
+//    override fun onItemClick(position: Int) {
+//        showExerciseDescription(position)
+//    }
 
 }
