@@ -60,6 +60,9 @@ interface ApiService {
     @POST("user_exercises")
     suspend fun putUserExercise(@Body userExercise: UserExercise): UserExercise
 
+    @Headers(
+        "Authorization: $API_KEY"
+    )
     @GET("user_exercises")
     suspend fun getUserExercises(
         @Query("user_id") user_id: Int): List<UserExercise>
@@ -70,6 +73,9 @@ interface ApiService {
     @POST("user_program_exercises")
     suspend fun putUserProgramExercise(@Body userProgramExercise: UserProgramExercise): UserProgramExercise
 
+    @Headers(
+        "Authorization: $API_KEY"
+    )
     @GET("user_program_exercises")
     suspend fun getUserProgramExercises(
         @Query("user_program_id") user_program_id: Int): List<UserProgramExercise>
@@ -81,6 +87,9 @@ interface ApiService {
     @POST("user_program_sessions")
     suspend fun putUserProgramSession(@Body userProgramSession: UserProgramSession): UserProgramSession
 
+    @Headers(
+        "Authorization: $API_KEY"
+    )
     @GET("user_program_sessions")
     suspend fun getUserProgramSession(
         @Query("user_program_id") user_program_id: Int): List<UserProgramSession>

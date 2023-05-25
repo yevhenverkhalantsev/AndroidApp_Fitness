@@ -13,4 +13,5 @@
     <color name="yellow">#FFFF5B </color>
     <color name="dark_blue">#0000FF </color>
     <color name="light_blue">#ADD8E6 </color>
+    <color name="background_blue">#00BFFF</color>
 </resources>

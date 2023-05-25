@@ -48,7 +48,7 @@ class ExerciseManager @Inject constructor(@ApplicationContext private val contex
         val exercisesNames = context.resources.getStringArray(R.array.beach_ready_exercises)
         return exercisesNames.mapIndexed { index, exerciseName ->
             Exercise(0, exerciseName)
-            //Exercise(getImageDrawableBeachReady(index), exerciseName) //@TODO Complete
+            Exercise(getDrawableIdsBeachReady()[index], exerciseName) //@TODO Complete
         }
 
     }
@@ -121,8 +121,8 @@ class ExerciseManager @Inject constructor(@ApplicationContext private val contex
         val resourceId =  when (category) {
             Category.BEACH_READY -> R.array.description_of_beach_ready_exercises
             Category.LOSE_WEIGHT -> R.array.description_of_loose_weight_exercises
-            Category.GET_FIT -> 0
-            Category.GET_STARTED -> 0
+            Category.GET_FIT -> R.array.description_of_get_fit_exercises
+            Category.GET_STARTED -> R.array.description_of_get_started_exercises
         }
         return context.resources.getStringArray(resourceId).asList()
     }
@@ -275,16 +275,16 @@ class ExerciseManager @Inject constructor(@ApplicationContext private val contex
 
     private fun getDrawableIdsGetStarted(): List<Int> {
         return listOf(  //@TODO Change icons
-            R.drawable.pushups,
-            R.drawable.situps,
-            R.drawable.lungs,
-            R.drawable.squats,
-            R.drawable.plank,
-            R.drawable.utfall,
-            R.drawable.jumpingjacks,
-            R.drawable.burpees,
-            R.drawable.mountainclimbers,
-            R.drawable.jumpsquats
+            R.drawable.gym_1,
+            R.drawable.gym_2,
+            R.drawable.gym_3,
+            R.drawable.gym_4,
+            R.drawable.gym_5,
+            R.drawable.gym_6,
+            R.drawable.gym_7,
+            R.drawable.gym_8,
+            R.drawable.gym_9,
+            R.drawable.gym_10
         )
     }
     
@@ -305,31 +305,31 @@ class ExerciseManager @Inject constructor(@ApplicationContext private val contex
 
     private fun getDrawableIdsBeachReady(): List<Int> {
         return listOf(  //@TODO Change icons
-            R.drawable.pushups,
-            R.drawable.situps,
-            R.drawable.lungs,
-            R.drawable.squats,
-            R.drawable.plank,
-            R.drawable.utfall,
-            R.drawable.jumpingjacks,
-            R.drawable.burpees,
-            R.drawable.mountainclimbers,
-            R.drawable.jumpsquats
+            R.drawable.beach_ready_1,
+            R.drawable.beach_ready_2,
+            R.drawable.beach_ready_3,
+            R.drawable.beach_ready_4,
+            R.drawable.beach_ready_5,
+            R.drawable.beach_ready_6,
+            R.drawable.beach_ready_7,
+            R.drawable.beach_ready_8,
+            R.drawable.beach_ready_9,
+            R.drawable.beach_ready_10
         )
     }
     
     private fun getDrawableIdGetFit(): List<Int> {
         return listOf(  //@TODO Change icons
-            R.drawable.pushups,
-            R.drawable.situps,
-            R.drawable.lungs,
-            R.drawable.squats,
-            R.drawable.plank,
-            R.drawable.utfall,
-            R.drawable.jumpingjacks,
-            R.drawable.burpees,
-            R.drawable.mountainclimbers,
-            R.drawable.jumpsquats
+            R.drawable.get_fit_1,
+            R.drawable.get_fit_2,
+            R.drawable.get_fit_3,
+            R.drawable.get_fit_4,
+            R.drawable.get_fit_5,
+            R.drawable.get_fit_6,
+            R.drawable.get_fit_7,
+            R.drawable.get_fit_8,
+            R.drawable.get_fit_9,
+            R.drawable.get_fit_10
         )
     }
     

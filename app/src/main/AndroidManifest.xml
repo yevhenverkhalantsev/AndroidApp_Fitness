@@ -12,7 +12,7 @@
         android:name=".screens.context.application.MainApplication"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Fitness"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:targetApi="31">
         <activity
             android:name=".screens.context.activity.MainActivity"

@@ -16,6 +16,8 @@ import com.example.fitness.R
 import com.example.fitness.databinding.FragmentExersicesBinding
 import com.example.fitness.domain.model.RemoteResource
 import com.example.fitness.domain.model.UserProgramUI
+import com.example.fitness.registration.model.Resource
+import com.example.fitness.registration.model.User
 import com.example.fitness.screens.exercises.someother.model.Exercise
 import com.example.fitness.screens.exercises.someother.model.UserExerciseUI
 import com.example.fitness.screens.exercises.someother.view.adapter.ExercisesRecyclerAdapter
@@ -23,7 +25,10 @@ import com.example.fitness.utils.Utils
 import com.example.fitness.utils.interfaces.OnItemClickListener
 import com.example.fitness.screens.exercises.workouts.viewmodel.ExercisesViewModel
 import com.example.fitness.utils.ExerciseManager
+import com.example.fitness.utils.UserManager
 import dagger.android.support.DaggerFragment
+import retrofit2.HttpException
+import java.io.IOException
 import javax.inject.Inject
 
 class ExercisesFragment : DaggerFragment() {
@@ -83,13 +88,26 @@ class ExercisesFragment : DaggerFragment() {
     }
 
     private fun handleSaveResult(result: RemoteResource) {
-        when (result) {
-            is RemoteResource.OnConflict -> showOnConflict(result.message)
-            //@TODO
-            else -> {
-                Toast.makeText(requireContext(), "", Toast.LENGTH_SHORT).show()
-            }
-        }
+//        when (result) {
+//            is RemoteResource.OnConflict -> showOnConflict(result.message)
+//            is RemoteResource.Success<*> -> {
+//                binding.addExercises.setImageDrawable()
+//                binding.addExercises.setOnClickListener(null)
+//                Toast.makeText(requireContext(), getString(R.string.success_exercises_added), Toast.LENGTH_LONG).show()
+//            }
+//            is RemoteResource.Error -> {
+//                Toast.makeText(requireContext(), getString(R.string.error_saving_exercises), Toast.LENGTH_LONG).show()
+//            }
+//            is RemoteResource.Loading -> {
+//                if (result.inProcess) {
+//                    hideMainUI(View.GONE)
+//                    binding.animationView.visibility = View.VISIBLE
+//                }
+//                else {
+//                    binding.animationView.visibility = View.GONE
+//                }
+//            }
+//        }
     }
 
     private fun showOnConflict(message: String) {
