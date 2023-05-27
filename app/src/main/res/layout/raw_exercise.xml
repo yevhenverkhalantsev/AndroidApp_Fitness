@@ -13,7 +13,7 @@
 
     <TextView
         android:id="@+id/exercise_name"
-        android:layout_width="60dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/exercise_image"
         app:layout_constraintStart_toEndOf="@+id/exercise_image"

@@ -12,6 +12,8 @@
         tools:layout="@layout/fragment_registration" >
         <action
             android:id="@+id/action_registration_to_planFragment"
+            app:popUpTo="@id/planFragment"
+            app:popUpToInclusive="true"
             app:destination="@id/planFragment" />
         <action
             android:id="@+id/action_registration_to_loginFragment"
@@ -19,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/planFragment"
-        android:name="com.example.fitness.planfragment.PlanFragment"
+        android:name="com.example.fitness.planfragment.view.PlanFragment"
         android:label="fragment_plan"
         tools:layout="@layout/fragment_plan" />
     <fragment
@@ -36,7 +38,13 @@
         android:id="@+id/profileFragment"
         android:name="com.example.fitness.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_registration"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/registration"
+            app:destination="@id/registration" />
+    </fragment>
     <fragment
         android:id="@+id/workoutsFragment"
         android:name="com.example.fitness.screens.exercises.workouts.WorkoutsFragment"
@@ -85,6 +93,8 @@
         android:label="LoginFragment" >
         <action
             android:id="@+id/action_loginFragment_to_planFragment"
+            app:popUpTo="@id/planFragment"
+            app:popUpToInclusive="true"
             app:destination="@id/planFragment" />
     </fragment>
 </navigation>

@@ -11,7 +11,7 @@ fun UserProgramUI.toUserProgram(userId: Int, appProgramTypeId: Int): UserProgram
         id = 0,
         user_id = userId,
         app_program_type_id = appProgramTypeId,
-        name = name,
+        name = name.toString(),
         use_timing = 0,
         icon = icon.toString()
     )

@@ -23,10 +23,11 @@
 
     <ImageView
         android:id="@+id/image_exercises"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/number_exercises" />
+        app:layout_constraintTop_toBottomOf="@+id/number_exercises"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
         android:id="@+id/name_exercises"

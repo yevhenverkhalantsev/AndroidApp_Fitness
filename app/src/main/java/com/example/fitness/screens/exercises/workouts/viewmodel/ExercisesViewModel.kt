@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fitness.data.remotesource.model.AppProgramType
+import com.example.fitness.data.remotesource.model.UserProgram
 import com.example.fitness.data.remotesource.model.UserProgramExercise
 import com.example.fitness.domain.model.RemoteResource
 import com.example.fitness.domain.model.UserProgramUI
@@ -20,23 +21,28 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-//@Singleton
 class ExercisesViewModel @Inject constructor (
-    private val remoteDatabaseRepository: ExercisesRemoteRepository,
-    private val exerciseManager: ExerciseManager) : ViewModel() {
+    private val remoteDatabaseRepository: ExercisesRemoteRepository)
+    : ViewModel() {
 
     lateinit var selectedCategory: Category
 
-    private val _savingState = MutableLiveData<RemoteResource>()
+    private var _savingState = MutableLiveData<RemoteResource>()
     val savingState get() = _savingState as LiveData<RemoteResource>
 
     fun saveUserProgram(userProgramUI: UserProgramUI) {
+        Log.e("WatchingMyDataHttp", "userProgramToSave = $userProgramUI")
         viewModelScope.launch {
             _savingState.postValue(RemoteResource.Loading(true))
-            val userPrograms = withContext(Dispatchers.IO) {
-                remoteDatabaseRepository.getUserProgram(UserManager.userId) }
+            val userPrograms : List<UserProgram> = withContext(Dispatchers.IO) {
+                try {
+                    remoteDatabaseRepository.getUserProgram(UserManager.userId)
+                } catch (throwable: Throwable) {
+                    emptyList()
+                }
+            }
             userPrograms.forEach { userProgram ->
-                if (userProgram.name == userProgramUI.name) {
+                if (userProgram.name == userProgramUI.name.toString()) {
                     _savingState.postValue(RemoteResource.OnConflict("You have already added this program!"))
                     return@launch
                 }
@@ -45,7 +51,7 @@ class ExercisesViewModel @Inject constructor (
             var appProgramType: AppProgramType? = null
             val appProgramTypes = withContext(Dispatchers.IO) { remoteDatabaseRepository.getAllAppProgramTypes() }
             appProgramTypes.forEach { programType ->
-                if (programType.description == userProgramUI.name) {
+                if (programType.description == userProgramUI.name.toString()) {
                     appProgramType = programType
                     return@forEach
                 }
@@ -54,7 +60,7 @@ class ExercisesViewModel @Inject constructor (
                 appProgramType = withContext(Dispatchers.IO) {
                     remoteDatabaseRepository.saveAppProgramType(AppProgramType(
                         id = 0,
-                        description = userProgramUI.name
+                        description = userProgramUI.name.toString()
                     ))
                 }
             }
@@ -86,6 +92,9 @@ class ExercisesViewModel @Inject constructor (
         }
     }
 
+    fun clearState() {
+        _savingState.value = RemoteResource.Loading(false)
+    }
 
 
 }

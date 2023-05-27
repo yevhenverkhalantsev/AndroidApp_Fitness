@@ -1,4 +1,4 @@
-package com.example.fitness.planfragment
+package com.example.fitness.planfragment.view
 
 import android.os.Bundle
 import android.util.Log
@@ -6,18 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitness.R
 import com.example.fitness.data.remotesource.model.UserProgram
 import com.example.fitness.data.remotesource.model.UserProgramSession
 import com.example.fitness.databinding.FragmentPlanBinding
+import com.example.fitness.planfragment.view.adapter.OnAdapterItemClickListener
+import com.example.fitness.planfragment.view.adapter.PlanRecyclerAdapter
 import com.example.fitness.planfragment.viewmodel.PlanViewModel
 import com.example.fitness.registration.model.Resource
 import dagger.android.support.DaggerFragment
 import java.time.DayOfWeek
 import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
 class PlanFragment : DaggerFragment() {
@@ -25,9 +28,11 @@ class PlanFragment : DaggerFragment() {
     private val viewModel: PlanViewModel by viewModels( factoryProducer = { factory } )
 
     private lateinit var userProgramSessions: List<UserProgramSession>
-    private lateinit var userPrograms: List<UserProgram>
+    private lateinit var userPrograms: MutableList<UserProgram>
     private var selectedDay: DayOfWeek = DayOfWeek.MONDAY
-    private var selectedDayTV: TextView = binding.monday
+    private lateinit var selectedDayTV: TextView
+    private lateinit var mAdapter : PlanRecyclerAdapter
+    private lateinit var onItemClickListener: OnAdapterItemClickListener
 
 
 
@@ -35,7 +40,6 @@ class PlanFragment : DaggerFragment() {
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        viewModel.getUserPrograms()
         super.onCreate(savedInstanceState)
     }
 
@@ -50,21 +54,45 @@ class PlanFragment : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentPlanBinding.bind(view)
+         selectedDayTV = binding.monday
+        binding.selectYourProgramText.text = getString(R.string.select_program_for_plan,
+            selectedDay.toString().lowercase())
 
-        //initListeners()
+        initFirstListeners()
         observeViewModel()
 
-        saveUserProgramSession(DayOfWeek.MONDAY) //@TODO delete
+    }
+
+    private fun initFirstListeners() {
+        onItemClickListener = object : OnAdapterItemClickListener {
+            override fun execute(program: UserProgram) {
+                deleteUserProgram(program)
+            }
+        }
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            viewModel.getUserPrograms()
+        }
+
+    }
+
+    private fun deleteUserProgram(program: UserProgram) {
+        if (userPrograms.size == 1) {
+            userPrograms.clear()
+            mAdapter.updateData(listOf())
+        }
+        else {
+            userPrograms.remove(program)
+            mAdapter.updateData(userPrograms, null)
+        }
+        viewModel.deleteUserProgram(program)
     }
 
     private fun observeViewModel() {
         viewModel.userPrograms.observe(viewLifecycleOwner) {
-            Log.e("Kranbomin", "userPrograms: $it")
             handleUserProgramsResourceResult(it)
 
         }
         viewModel.userProgramSessions.observe(viewLifecycleOwner) {
-            Log.e("Kranbomin", "userProgramsSessions: $it")
             handleProgramSessionsResourceResult(it)
         }
     }
@@ -78,7 +106,8 @@ class PlanFragment : DaggerFragment() {
     }
 
     private fun handleUserProgramSuccess(result: Resource.Success<*>) {
-        userPrograms = result.element as List<UserProgram>
+        showMainUI()
+        userPrograms = result.element as MutableList<UserProgram>
     }
 
     private fun handleProgramSessionsResourceResult(result: Resource) {
@@ -90,12 +119,15 @@ class PlanFragment : DaggerFragment() {
     }
 
     private fun handleUserProgramSessionError(error: Resource.Error) {
+        showNoProgramsSavedScreen()
         setLoadingAnimationVisibility(View.GONE)
-        //showErrorStatus() //@TODO add on UI button "Retry" ()and show here
+        binding.swipeRefreshLayout.isRefreshing = false
     }
 
     private fun handleUserProgramSessionSuccess(it: Resource.Success<*>) {
+        binding.errorMessage.visibility = View.GONE
         userProgramSessions = it.element as List<UserProgramSession>
+        binding.swipeRefreshLayout.isRefreshing = false
         setLoadingAnimationVisibility(View.GONE)
         setCurrentDayData()
         initListeners()
@@ -106,47 +138,98 @@ class PlanFragment : DaggerFragment() {
     }
 
     private fun setCurrentDayData() {
-        //do user have program session for this day
-        //if yes -> show program session name and option to CHANGE program session for this day
-        //if no -> show option to select program session
+        if (userPrograms.isNotEmpty()) {
+            if (userHasProgramForCurrentSelectedDay()) {
+                setAdapterDataSelected()
+            } else {
+                setAdapterData()
+            }
+        }
+        else {
+            showNoProgramsSavedScreen()
+        }
 
     }
 
+    private fun showNoProgramsSavedScreen() {
+        binding.confirmSelectedProgramButton.visibility = View.GONE
+        binding.recyclerView.visibility = View.GONE
+        binding.errorMessage.visibility = View.VISIBLE
+        binding.errorMessage.text = getString(R.string.no_programs_saved)
+    }
+
+    private fun showMainUI() {
+        binding.confirmSelectedProgramButton.visibility = View.VISIBLE
+        binding.recyclerView.visibility = View.VISIBLE
+        binding.errorMessage.visibility = View.GONE
+    }
+
+    private fun setAdapterData() {
+        mAdapter = PlanRecyclerAdapter(onItemClickListener)
+        binding.recyclerView.adapter = mAdapter
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        mAdapter.updateData(userPrograms, null)
+    }
+
+    private fun setAdapterDataSelected() {
+        val selectedProgramId = getSelectedProgramName()
+        mAdapter = PlanRecyclerAdapter(onItemClickListener)
+        binding.recyclerView.adapter = mAdapter
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        mAdapter.updateData(userPrograms, selectedProgramId)
+    }
+
+    private fun getSelectedProgramName(): Int? {
+        if (userProgramSessions.isEmpty()) return null
+        userProgramSessions.forEach {
+            val localProgramDateTime = viewModel.convertDBDateTimeToLocal(it.startTime)
+            if (localProgramDateTime.dayOfWeek == selectedDay) {
+                return it.user_program_id
+            }
+        }
+        return null
+    }
+
+    private fun userHasProgramForCurrentSelectedDay(): Boolean {
+        if (userProgramSessions.isEmpty()) return false
+        userProgramSessions.forEach {
+            val localProgramDateTime = viewModel.convertDBDateTimeToLocal(it.startTime)
+            if (localProgramDateTime.dayOfWeek == selectedDay) {
+                return true
+            }
+        }
+        return false
+    }
+
     private fun initListeners() {
+        binding.confirmSelectedProgramButton.setOnClickListener {
+            if (mAdapter.selectedProgram != null) {
+                saveUserProgramSession()
+            }
+            else {
+                Toast.makeText(requireContext(), getString(R.string.select_program), Toast.LENGTH_SHORT).show()
+            }
+        }
         binding.monday.setOnClickListener {
             setSelectedDay(it as TextView, DayOfWeek.MONDAY)
-            Log.e("Kranbomin", "monday.setOnClickListener")
-            saveUserProgramSession(DayOfWeek.MONDAY)
         }
         binding.tuesday.setOnClickListener {
             setSelectedDay(it as TextView, DayOfWeek.TUESDAY)
-            Log.e("Kranbomin", "tuesday.setOnClickListener")
-            saveUserProgramSession(DayOfWeek.TUESDAY)
         }
         binding.wednesday.setOnClickListener {
             setSelectedDay(it as TextView, DayOfWeek.WEDNESDAY)
-            Log.e("Kranbomin", "wednesday.setOnClickListener")
-            saveUserProgramSession(DayOfWeek.WEDNESDAY)
         }
         binding.thursday.setOnClickListener {
             setSelectedDay(it as TextView, DayOfWeek.THURSDAY)
-            Log.e("Kranbomin", "thursday.setOnClickListener")
-            saveUserProgramSession(DayOfWeek.THURSDAY)
         }
         binding.friday.setOnClickListener {
             setSelectedDay(it as TextView, DayOfWeek.FRIDAY)
-            Log.e("Kranbomin", "friday.setOnClickListener")
-            saveUserProgramSession(DayOfWeek.FRIDAY)
         }
         binding.saturday.setOnClickListener {
             setSelectedDay(it as TextView, DayOfWeek.SATURDAY)
-            Log.e("Kranbomin", "saturday.setOnClickListener")
-            saveUserProgramSession(DayOfWeek.SATURDAY)
         }
         binding.sunday.setOnClickListener {
             setSelectedDay(it as TextView, DayOfWeek.SUNDAY)
-            Log.e("Kranbomin", "sunday.setOnClickListener")
-            saveUserProgramSession(DayOfWeek.SUNDAY)
         }
     }
 
@@ -155,44 +238,21 @@ class PlanFragment : DaggerFragment() {
         selectedDayTV = selectedDayTextView
         selectedDayTextView.setBackgroundResource(R.drawable.selected_day_background)
         selectedDay = day
+        binding.selectYourProgramText.text = getString(R.string.select_program_for_plan, selectedDay.toString().lowercase())
         setCurrentDayData()
     }
 
-    private fun saveUserProgramSession(dayOfWeek: DayOfWeek) {
-        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+    private fun saveUserProgramSession() {
         //val timeDateTime = LocalDateTime.now().format(formatter)
         var time = LocalDateTime.now()
         for (i in 1..6) {
-            if (time.dayOfWeek == dayOfWeek) {
+            if (time.dayOfWeek == selectedDay) {
                 break
             }
             time = time.plusDays(1)
         }
-//        viewModel.saveUserProgramSession(time = time.format(formatter))
-        Log.e("TimeDateTimeCheck", "LocalDateTime.now().dayOfWeek = ${LocalDateTime.now().dayOfWeek}")
+        viewModel.saveUserProgramSession(mAdapter.selectedProgram!!, time)
     }
-
-
-//    private val spendTime = object : CountDownTimer(30000, 1000) {
-//        override fun onTick(millisUntilFinished: Long) {
-//            Log.i("PerformingExercisesFragment", "onTick: $millisUntilFinished")
-//            binding.countdown.text = (millisUntilFinished / 1000).toString()
-//        }
-//
-//        override fun onFinish() {
-//            Log.i("PerformingExercisesFragment", "onFinish: ")
-//        }
-//    }
-//
-//    override fun onStart() {
-//        super.onStart()
-//        spendTime.start()
-//    }
-//
-//    override fun onStop() {
-//        super.onStop()
-//        spendTime.cancel()
-//    }
 
 
     override fun onDestroyView() {

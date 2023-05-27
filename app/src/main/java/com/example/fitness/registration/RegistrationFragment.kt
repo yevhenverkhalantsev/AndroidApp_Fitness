@@ -2,19 +2,16 @@ package com.example.fitness.registration
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.fitness.R
 import com.example.fitness.screens.context.activity.MainActivity
-import com.example.fitness.screens.context.application.MainApplication
 import com.example.fitness.databinding.FragmentRegistrationBinding
 import com.example.fitness.registration.model.Resource
 import com.example.fitness.registration.model.User
@@ -30,7 +27,7 @@ import javax.inject.Inject
 class RegistrationFragment:  DaggerFragment(), OnExceptionHandler {
 
     @Inject lateinit var factory: ViewModelProvider.Factory
-    private val viewModel: RegistrationViewModel by activityViewModels(factoryProducer = { factory } )
+    private val viewModel: RegistrationViewModel by viewModels(factoryProducer = { factory } )
     private var _binding: FragmentRegistrationBinding? = null
     private val binding get() = _binding!!
 
@@ -53,8 +50,8 @@ class RegistrationFragment:  DaggerFragment(), OnExceptionHandler {
 
     private fun loginUserIfOnline() {
         val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE)
-        val userId = sharedPref.getInt(Utils.userIdKey, 0)
-        if (userId == 0) {
+        val userId = sharedPref.getInt(Utils.userIdKey, -1)
+        if (userId == -1) {
             (requireActivity() as MainActivity).hideBottomNavigationView()
             return
         }
@@ -76,6 +73,10 @@ class RegistrationFragment:  DaggerFragment(), OnExceptionHandler {
             if (!hasFocus) {
                 isPhoneNumberCorrect()
             }
+        }
+
+        binding.alreadyHaveAnAccount.setOnClickListener {
+            findNavController().navigate(R.id.action_registration_to_loginFragment)
         }
 
 
@@ -138,6 +139,8 @@ class RegistrationFragment:  DaggerFragment(), OnExceptionHandler {
         binding.registerButton.visibility = visibility
         binding.logo .visibility = visibility
         binding.phoneNumber.visibility = visibility
+        binding.welcome.visibility = visibility
+        binding.alreadyHaveAnAccount.visibility = visibility
     }
 
     override fun onDestroyView() {
@@ -146,6 +149,7 @@ class RegistrationFragment:  DaggerFragment(), OnExceptionHandler {
     }
 
     override fun handleException(throwable: Throwable) {
+        hideMainUI(View.VISIBLE)
         when (throwable) {
             is HttpException -> {
                 Toast.makeText(requireContext(), getString(R.string.error_phone_number_is_already_registered), Toast.LENGTH_LONG).show()
@@ -156,7 +160,7 @@ class RegistrationFragment:  DaggerFragment(), OnExceptionHandler {
             else -> {
                 Toast.makeText(requireContext(), getString(R.string.error_unknown_try_again_later), Toast.LENGTH_LONG).show()
             }
-    }
+        }
     }
 
 }

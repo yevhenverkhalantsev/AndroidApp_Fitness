@@ -1,8 +1,6 @@
 package com.example.fitness.utils
 
 import android.content.Context
-import android.graphics.drawable.Drawable
-import androidx.appcompat.content.res.AppCompatResources
 import com.example.fitness.R
 import com.example.fitness.description.model.ExerciseWithDescription
 import com.example.fitness.di.annotations.ApplicationContext
@@ -46,71 +44,76 @@ class ExerciseManager @Inject constructor(@ApplicationContext private val contex
 
     private fun getBeachReadyExercises(): List<Exercise> {
         val exercisesNames = context.resources.getStringArray(R.array.beach_ready_exercises)
+        val exercisesImagesIds = getDrawableIdsBeachReady()
         return exercisesNames.mapIndexed { index, exerciseName ->
-            Exercise(0, exerciseName)
-            Exercise(getDrawableIdsBeachReady()[index], exerciseName) //@TODO Complete
+            Exercise(exercisesImagesIds[index], exerciseName)
         }
 
     }
     private fun getGetFitExercises(): List<Exercise> {
         val exercisesNames = context.resources.getStringArray(R.array.get_fit_exercises)
+        val exercisesImagesIds = getDrawableIdGetFit()
         return exercisesNames.mapIndexed { index, exerciseName ->
-            Exercise(getExerciseImageGetFitById(index), exerciseName)
+            Exercise(exercisesImagesIds[index], exerciseName)
         }
     }
 
     private fun getGetStartedExercises(): List<Exercise> {
         val exercisesNames = context.resources.getStringArray(R.array.get_started_exercises)
+        val exercisesImagesIds = getDrawableIdsGetStarted()
         return exercisesNames.mapIndexed { index, exerciseName ->
-            Exercise(getExerciseImageGetFitById(index), exerciseName)
+            Exercise(exercisesImagesIds[index], exerciseName)
         }
 
-
     }
-
-
-
-    private fun getDrawableIdsGetFit(): Drawable {
-        return AppCompatResources.getDrawable(context, R.drawable.plank)!!
-        //@TODO Complete
-
-    }
-    
-    
-    private fun getDrawableIds(): Drawable {
-        return AppCompatResources.getDrawable(context, R.drawable.plank)!!
-        //@TODO Complete
-
-    }
-
 
     fun getExercisesWithDescription(category: Category, id: Int): ExerciseWithDescription {
         return when (category) {
-            //Category.BEACH_READY -> ExerciseWithDescription(
-//                Exercise(
-//                        R.drawable.burpees
-//                    )!!, ""
-//                ), listOf()
-//            ) //@TODO
-            Category.LOSE_WEIGHT -> return getLoseWeightWithDescription(id)
-            //Category.GET_FIT -> ExerciseWithDescription(
-//                Exercise(R.drawable.burpees, ""
-//                    )!!, ""
-//                ), listOf()
-//            ) //@TODO
-           // Category.GET_STARTED -> ExerciseWithDescription(0, "")
-//                Exercise(
-//                    AppCompatResources.getDrawable(
-//                        context,
-//                        R.drawable.burpees
-//                    )!!, ""
-//                ), listOf()
-//            ) //@TODO
-            else -> ExerciseWithDescription(Exercise(0, ""), listOf(""))
+            Category.BEACH_READY -> getBeachReadyExerciseWithDescription(id)
+            Category.LOSE_WEIGHT -> getLoseWeightExerciseWithDescription(id)
+            Category.GET_FIT -> getGetFitExerciseWithDescription(id)
+            Category.GET_STARTED -> getGetStartedExerciseWithDescription(id)
         }
     }
 
-    private fun getLoseWeightWithDescription(id: Int): ExerciseWithDescription {
+    private fun getBeachReadyExerciseWithDescription(id: Int): ExerciseWithDescription {
+        val imageDrawable = getImageDrawableIdBeachReady(id)
+        val exerciseName = context.resources.getStringArray(R.array.beach_ready_exercises)[id]
+        val descriptions = context.resources.getStringArray(R.array.description_of_beach_ready_exercises)[id].split(".")
+        return ExerciseWithDescription(Exercise(imageDrawable, exerciseName), descriptions)
+    }
+
+    private fun getImageDrawableIdBeachReady(id: Int): Int {
+        val drawableIds = getDrawableIdsBeachReady()
+        if (id in drawableIds.indices) {
+            return drawableIds[id]
+        }
+        return R.color.white
+    }
+
+    private fun getGetStartedExerciseWithDescription(id: Int): ExerciseWithDescription {
+        val imageDrawable = getImageDrawableIdGetStarted(id)
+        val exerciseName = context.resources.getStringArray(R.array.get_started_exercises)[id]
+        val descriptions = context.resources.getStringArray(R.array.description_of_get_started_exercises)[id].split(".")
+        return ExerciseWithDescription(Exercise(imageDrawable, exerciseName), descriptions)
+    }
+
+    private fun getImageDrawableIdGetStarted(id: Int): Int {
+        val drawableIds = getDrawableIdsGetStarted()
+        if (id in drawableIds.indices) {
+            return drawableIds[id]
+        }
+        return R.color.white
+    }
+
+    private fun getGetFitExerciseWithDescription(id: Int): ExerciseWithDescription {
+        val imageDrawable = getImageDrawableIdGetFit(id)
+        val exerciseName = context.resources.getStringArray(R.array.get_fit_exercises)[id]
+        val descriptions = context.resources.getStringArray(R.array.description_of_get_fit_exercises)[id].split(".")
+        return ExerciseWithDescription(Exercise(imageDrawable, exerciseName), descriptions)
+    }
+
+    private fun getLoseWeightExerciseWithDescription(id: Int): ExerciseWithDescription {
         val imageDrawable = getImageDrawableIdLoseWeight(id)
         val exerciseName = context.resources.getStringArray(R.array.loose_weight_exercises)[id]
         val descriptions = context.resources.getStringArray(R.array.description_of_loose_weight_exercises)[id].split(".")
@@ -135,43 +138,17 @@ class ExerciseManager @Inject constructor(@ApplicationContext private val contex
         return R.color.white
     }
 
-    private fun getImageDrawableBeachReady(id: Int): Drawable {
-        val drawableIds = getDrawableIdsBeachReady()
+    private fun getImageDrawableIdGetFit(id: Int): Int {
+        val drawableIds = getDrawableIdGetFit()
         if (id in drawableIds.indices) {
-            return AppCompatResources.getDrawable(context, drawableIds[id])!!
+            return drawableIds[id]
         }
-        return AppCompatResources.getDrawable(context, R.color.white)!!
-    }
-
-    private fun getExerciseImageGetFitById(id: Int): Int {
-        //@TODO change icons to GetFit icons
-        val images = listOf(
-            R.drawable.pushups,
-            R.drawable.situps,
-            R.drawable.lungs,
-            R.drawable.squats,
-            R.drawable.plank,
-            R.drawable.utfall,
-            R.drawable.jumpingjacks,
-            R.drawable.burpees,
-            R.drawable.mountainclimbers,
-            R.drawable.jumpsquats
-        )
-        return images[id]
+        return R.color.white
     }
 
     fun getPerformingExercises(category: Category): List<PerformingExercise> {
-        return when (category) {
-            Category.BEACH_READY -> listOf() //getBeachReadyExercises(category)
-            Category.LOSE_WEIGHT -> getLoseWeightPerformingExercises(category)
-            Category.GET_FIT -> listOf() //getGetFitExercises(category)
-            Category.GET_STARTED -> listOf() //getGetStartedExercises(category)
-        }
-    }
-
-    private fun getLoseWeightPerformingExercises(category: Category): List<PerformingExercise> {
         val rawExercises = getExercises(category)
-        val exercisesIntervalsList = getLoseWeightExercisesTimes()
+        val exercisesIntervalsList = getExercisesIntervals(category)
         return rawExercises.mapIndexed { index, exercise ->
             PerformingExercise(exercise, exercisesIntervalsList[index])
         }
@@ -207,7 +184,7 @@ class ExerciseManager @Inject constructor(@ApplicationContext private val contex
         )
     }
 
-    private fun getLoseBeachReadyExercisesTimes(): List<ExerciseInterval> {
+    private fun getGetStartedExercisesTimes(): List<ExerciseInterval> {
         return listOf(
             ExerciseInterval(30, 10),
             ExerciseInterval(45, 15),
@@ -247,12 +224,6 @@ class ExerciseManager @Inject constructor(@ApplicationContext private val contex
         }
     }
 
-    private fun getGetStartedExercisesTimes(): List<ExerciseInterval> {
-        return listOf<ExerciseInterval>() //@TODO
-    }
-
-
-
     fun getDatabaseExercises(category: Category): List<UserExerciseUI> {
         val exercisesNames = getExercisesNames(category)
         val exercisesImagesId = getExercisesImagesId(category)
@@ -274,7 +245,7 @@ class ExerciseManager @Inject constructor(@ApplicationContext private val contex
 
 
     private fun getDrawableIdsGetStarted(): List<Int> {
-        return listOf(  //@TODO Change icons
+        return listOf(
             R.drawable.gym_1,
             R.drawable.gym_2,
             R.drawable.gym_3,
@@ -304,7 +275,7 @@ class ExerciseManager @Inject constructor(@ApplicationContext private val contex
     }
 
     private fun getDrawableIdsBeachReady(): List<Int> {
-        return listOf(  //@TODO Change icons
+        return listOf(
             R.drawable.beach_ready_1,
             R.drawable.beach_ready_2,
             R.drawable.beach_ready_3,
@@ -319,7 +290,7 @@ class ExerciseManager @Inject constructor(@ApplicationContext private val contex
     }
     
     private fun getDrawableIdGetFit(): List<Int> {
-        return listOf(  //@TODO Change icons
+        return listOf(
             R.drawable.get_fit_1,
             R.drawable.get_fit_2,
             R.drawable.get_fit_3,

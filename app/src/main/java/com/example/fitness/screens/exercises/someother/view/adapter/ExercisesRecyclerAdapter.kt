@@ -1,11 +1,8 @@
 package com.example.fitness.screens.exercises.someother.view.adapter
 
-import android.annotation.SuppressLint
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
@@ -13,19 +10,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fitness.R
 import com.example.fitness.screens.exercises.someother.model.Exercise
 import com.example.fitness.utils.interfaces.OnItemClickListener
-import java.sql.DatabaseMetaData
 
 class ExercisesRecyclerAdapter(private val onItemClickListener: OnItemClickListener) : RecyclerView.Adapter<ExercisesRecyclerAdapter.ExerciseViewHolder>() {
 
     var exercises: List<Exercise> = listOf()
         set(value) {
-        field = value
-        notifyDataSetChanged()
-    }
+            field = value
+            notifyDataSetChanged()
+        }
 
     inner class ExerciseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val exercise_image: ImageView = itemView.findViewById(R.id.exercise_image)
-        val exercise_name: TextView = itemView.findViewById(R.id.exercise_name)
+        val exerciseImage: ImageView = itemView.findViewById(R.id.exercise_image)
+        val exerciseName: TextView = itemView.findViewById(R.id.exercise_name)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExerciseViewHolder {
@@ -39,13 +35,11 @@ class ExercisesRecyclerAdapter(private val onItemClickListener: OnItemClickListe
     }
 
     override fun onBindViewHolder(holder: ExerciseViewHolder, position: Int) {
-        Log.i("krembolin", "items = $exercises")
         val exercise = exercises[position]
-        holder.exercise_name.text = exercise.exercise_name
-        holder.exercise_image.setImageDrawable(AppCompatResources.getDrawable(holder.itemView.context, exercise.exercise_image))
+        holder.exerciseName.text = exercise.exercise_name
+        holder.exerciseImage.setImageDrawable(AppCompatResources.getDrawable(holder.itemView.context, exercise.exercise_image))
 
         holder.itemView.setOnClickListener { onItemClickListener.onItemClick(position) }
-
     }
 
 }

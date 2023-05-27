@@ -15,15 +15,6 @@ class RegistrationViewModel @Inject constructor(private val repository: Registra
     private val _process = MutableLiveData<Resource>()
     val process get() = _process
 
-
-    fun getUsers() {
-        viewModelScope.launch {
-            delay(3000)
-            val result = async { repository.getUsers() }
-            Log.i("kelo", "result = ${result.await()}")
-        }
-    }
-
     fun registrateUser(user: User) {
         _process.value = Resource.Loading(true)
 

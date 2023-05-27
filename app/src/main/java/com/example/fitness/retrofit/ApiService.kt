@@ -6,10 +6,15 @@ import com.example.fitness.data.remotesource.model.UserProgram
 import com.example.fitness.data.remotesource.model.UserProgramExercise
 import com.example.fitness.data.remotesource.model.UserProgramSession
 import com.example.fitness.registration.model.User
+import okhttp3.ResponseBody
+import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.POST
+import retrofit2.http.PUT
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 private const val API_KEY = "004E5EEA-E02"
@@ -94,47 +99,26 @@ interface ApiService {
     suspend fun getUserProgramSession(
         @Query("user_program_id") user_program_id: Int): List<UserProgramSession>
 
-//
-//    @GET("albums/{id}")
-//    suspend fun getAlbum(@Path("id") id: Int): ArtAlbum
-//
-//
-//    @Headers (
-//        "Authorization : $API_KEY"
-//    )
-//    @POST("app_program_type")
-//    suspend fun putProgramType(@Body programType: ProgramType): ProgramType
-//
-//    @Headers (
-//        "Authorization: $API_KEY"
-//    )
-//    @GET("app_program_type")
-//    suspend fun getProgramType(): List<ProgramType>
-//
-//    @Headers (
-//        "Authorization: $API_KEY"
-//    )
-//    @GET("user_programs")
-//    suspend fun getUserProgram(): List<UserProgram>
-//
-//    @Headers (
-//        "Authorization: $API_KEY"
-//    )
-//    @POST("user_programs")
-//    suspend fun putUserProgram(@Body userProgram: UserProgram): UserProgram
-//
-//    @Headers(
-//        "Authorization: $API_KEY"
-//    )
-//    @PUT("user_programs/{id}")
-//    suspend fun updateUserProgram(@Body userProgram: UserProgram): UserProgram
-//
-//    @Headers(
-//        "Authorization: $API_KEY"
-//    )
-//    @DELETE("user_programs/{id}")
-//    suspend fun deleteUserProgram(@Body userProgram: UserProgram): UserProgram
+    @Headers(
+        "Authorization: $API_KEY"
+    )
+    @DELETE("user_program_sessions/{id}")
+    suspend fun deleteUserProgramSession(
+        @Path("id") id: Int): Response<ResponseBody>
 
+    @Headers(
+        "Authorization: $API_KEY"
+    )
+    @DELETE("user_programs/{id}")
+    suspend fun deleteUserProgram(
+        @Path("id") id: Int): Response<ResponseBody>
+
+    @Headers(
+        "Authorization: $API_KEY"
+    )
+    @PUT("user_program_sessions/")
+    suspend fun updateUserProgramSession(
+        @Body userProgramSession: UserProgramSession): UserProgramSession
 
     companion object {
         const val BASE_URL: String = "https://wfa-media.com/exercise23/v3/api.php/"

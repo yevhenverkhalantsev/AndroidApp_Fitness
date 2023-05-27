@@ -4,10 +4,11 @@ import com.example.fitness.login.LoginFragment
 import com.example.fitness.login.viewmodel.LoginViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.fitness.description.view.DescriptionExercisesFragment
 import com.example.fitness.registration.RegistrationFragment
 import com.example.fitness.registration.viewmodel.RegistrationViewModel
 import com.example.fitness.di.annotations.ViewModelKey
-import com.example.fitness.planfragment.PlanFragment
+import com.example.fitness.planfragment.view.PlanFragment
 import com.example.fitness.planfragment.viewmodel.PlanViewModel
 import com.example.fitness.screens.exercises.exercisePerforming.PerformingViewModel
 import com.example.fitness.screens.exercises.exercisePerforming.view.PerformingExercisesFragment
@@ -65,6 +66,10 @@ interface ViewModelModule {
 
     @ContributesAndroidInjector
     fun bindPlanFragment(): PlanFragment
+
+
+    @ContributesAndroidInjector
+    fun bindDescriptionFragment(): DescriptionExercisesFragment
 
     @Binds
     @IntoMap

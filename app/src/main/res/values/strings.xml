@@ -26,6 +26,13 @@
     <string name="welcome">Velkommen til Fitness app</string>
     <string name="select_program_for_plan">Select your program for %1$s</string>
     <string name="save_program">Save program</string>
+    <string name="no_programs_saved">Oops, u have no programs saved ;(\n Try to add some and then come back!</string>
+    <string name="select_program">Please, select program which u want to save</string>
+    <string name="success_exercises_added">Program saved successfully</string>
+    <string name="you_already_have_this_program_saved">You already have this program saved!</string>
+    <string name="user_id_placeholder">Current User: %1$d</string>
+    <string name="error_unknown">Ukjent feil</string>
+    <string name="error_phone_number_is_empty">Taste inn nummeret</string>
 
     <string-array name="loose_weight_exercises">
         <item>Push-ups</item>

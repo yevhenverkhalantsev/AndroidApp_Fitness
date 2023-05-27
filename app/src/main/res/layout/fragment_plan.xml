@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swipeRefreshLayout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".planfragment.PlanFragment">
+    tools:context=".planfragment.view.PlanFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
 
     <View
         android:id="@+id/top_background_view"
@@ -36,8 +44,7 @@
         android:textStyle="bold"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@id/white_background_view"
-        app:layout_constraintEnd_toEndOf="@id/white_background_view"
-        android:text="@string/select_program_for_plan"/>
+        app:layout_constraintEnd_toEndOf="@id/white_background_view"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -67,6 +74,7 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:text="T"
+        android:gravity="center"
         app:layout_constraintEnd_toStartOf="@+id/wednesday"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/monday"
@@ -87,6 +95,7 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:text="W"
+        android:gravity="center"
         app:layout_constraintEnd_toStartOf="@+id/thursday"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tuesday"
@@ -97,6 +106,7 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:text="T"
+        android:gravity="center"
         app:layout_constraintEnd_toStartOf="@+id/friday"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/wednesday"
@@ -107,6 +117,7 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:text="F"
+        android:gravity="center"
         app:layout_constraintEnd_toStartOf="@+id/saturday"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/thursday"
@@ -117,6 +128,7 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:text="S"
+        android:gravity="center"
         app:layout_constraintEnd_toStartOf="@+id/sunday"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/friday"
@@ -127,6 +139,7 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:text="S"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/saturday"
@@ -137,10 +150,27 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:text="M"
+        android:gravity="center"
+        android:background="@drawable/selected_day_background"
         app:layout_constraintEnd_toStartOf="@+id/tuesday"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/plan" />
 
+    <TextView
+        android:id="@+id/errorMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:visibility="gone"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="@id/white_background_view"
+        app:layout_constraintStart_toStartOf="@id/white_background_view"
+        app:layout_constraintEnd_toEndOf="@id/white_background_view"
+        app:layout_constraintBottom_toBottomOf="@id/white_background_view"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

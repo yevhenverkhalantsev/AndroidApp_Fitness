@@ -15,14 +15,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.fitness.R
 import com.example.fitness.databinding.FragmentPerformingExercisesBinding
-import com.example.fitness.screens.context.application.MainApplication
-import com.example.fitness.screens.exercises.exercisePerforming.PerformingViewModel
 import com.example.fitness.screens.exercises.exercisePerforming.model.PerformingExercise
 import com.example.fitness.screens.exercises.workouts.viewmodel.ExercisesViewModel
 import com.example.fitness.utils.ExerciseManager
+import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class PerformingExercisesFragment : Fragment() {
+class PerformingExercisesFragment : DaggerFragment() {
     private var _binding : FragmentPerformingExercisesBinding? = null
     private val binding get() = _binding!!
     //private val performingViewModel : PerformingViewModel by lazy { PerformingViewModel() }
@@ -37,7 +36,7 @@ class PerformingExercisesFragment : Fragment() {
     private var isExercise = true
 
 
-    private val spendTime: CountDownTimer by lazy { object : CountDownTimer(9000000, 100) {
+    private val spendTime: CountDownTimer by lazy { object : CountDownTimer(9000000, 1000) {
         override fun onTick(millisUntilFinished: Long) {
             Log.i("PerformingExercisesFragment", "isStopped = $isStopped onn tick: $millisUntilFinished")
             if (!isStopped) {

@@ -51,8 +51,25 @@ class WorkoutsFragment : DaggerFragment() {
         binding.loseWeightIcon.setOnClickListener {
             moveToNextFragment(Category.LOSE_WEIGHT)
         }
+        binding.beachReady.setOnClickListener {
+            moveToNextFragment(Category.BEACH_READY)
+        }
+        binding.beachReadyIcon.setOnClickListener {
+            moveToNextFragment(Category.BEACH_READY)
+        }
+        binding.getStarted.setOnClickListener {
+            moveToNextFragment(Category.GET_STARTED)
+        }
+        binding.getStartedIcon.setOnClickListener {
+            moveToNextFragment(Category.GET_STARTED)
+        }
+        binding.getFit.setOnClickListener {
+            moveToNextFragment(Category.GET_FIT)
+        }
+        binding.getFitIcon.setOnClickListener {
+            moveToNextFragment(Category.GET_FIT)
+        }
 
-        //@TODO
     }
 
     private fun moveToNextFragment(category: Category) {
