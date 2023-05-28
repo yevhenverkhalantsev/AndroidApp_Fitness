@@ -1,6 +1,6 @@
 package com.example.fitness.domain.model
 
-import com.example.fitness.screens.exercises.someother.model.UserExerciseUI
+import com.example.fitness.screens.exercises.exercises.model.UserExerciseUI
 
 data class UserProgramUI(
     val name: Int,

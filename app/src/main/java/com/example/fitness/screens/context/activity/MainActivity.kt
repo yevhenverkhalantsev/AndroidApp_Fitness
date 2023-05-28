@@ -1,6 +1,5 @@
 package com.example.fitness.screens.context.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.NavHostFragment

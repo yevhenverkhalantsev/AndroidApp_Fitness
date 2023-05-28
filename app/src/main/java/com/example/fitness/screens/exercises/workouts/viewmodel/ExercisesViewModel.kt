@@ -1,6 +1,5 @@
 package com.example.fitness.screens.exercises.workouts.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,9 +11,8 @@ import com.example.fitness.domain.model.RemoteResource
 import com.example.fitness.domain.model.UserProgramUI
 import com.example.fitness.domain.repository.ExercisesRemoteRepository
 import com.example.fitness.screens.exercises.workouts.model.Category
-import com.example.fitness.utils.ExerciseManager
-import com.example.fitness.utils.Extensions.UiToDatabase.toUserExercise
-import com.example.fitness.utils.Extensions.UiToDatabase.toUserProgram
+import com.example.fitness.utils.toUserExercise
+import com.example.fitness.utils.toUserProgram
 import com.example.fitness.utils.UserManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -31,7 +29,6 @@ class ExercisesViewModel @Inject constructor (
     val savingState get() = _savingState as LiveData<RemoteResource>
 
     fun saveUserProgram(userProgramUI: UserProgramUI) {
-        Log.e("WatchingMyDataHttp", "userProgramToSave = $userProgramUI")
         viewModelScope.launch {
             _savingState.postValue(RemoteResource.Loading(true))
             val userPrograms : List<UserProgram> = withContext(Dispatchers.IO) {
@@ -43,7 +40,7 @@ class ExercisesViewModel @Inject constructor (
             }
             userPrograms.forEach { userProgram ->
                 if (userProgram.name == userProgramUI.name.toString()) {
-                    _savingState.postValue(RemoteResource.OnConflict("You have already added this program!"))
+                    _savingState.postValue(RemoteResource.OnConflict("Du har allerede lagt til dette programmet!"))
                     return@launch
                 }
             }
@@ -71,14 +68,12 @@ class ExercisesViewModel @Inject constructor (
             }
 
             userProgramUI.exercises.forEach { exercise ->
-                Log.i("RestTestingApi", "BEFORE saving userProgram!")
 
                 val userExercise = withContext(Dispatchers.IO) {
                     remoteDatabaseRepository.saveUserExercise(
                         exercise.toUserExercise(UserManager.userId))
                 }
 
-                Log.i("RestTestingApi", "MIDDLE saving userProgram!")
                 remoteDatabaseRepository.saveUserProgramExercise(
                     UserProgramExercise(
                         id = 0,
@@ -87,7 +82,6 @@ class ExercisesViewModel @Inject constructor (
                     )
                 )
                 _savingState.postValue(RemoteResource.Success(null))
-                Log.i("RestTestingApi", "saving userProgram!")
             }
         }
     }

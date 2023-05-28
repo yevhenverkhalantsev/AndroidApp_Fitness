@@ -1,6 +1,6 @@
 package com.example.fitness.screens.exercises.exercisePerforming.model
 
-import com.example.fitness.screens.exercises.someother.model.Exercise
+import com.example.fitness.screens.exercises.exercises.model.Exercise
 
 data class PerformingExercise(
     val exercise: Exercise,
@@ -15,10 +15,4 @@ data class ExerciseInterval(
         return "$performingTime:$restTime"
     }
 
-    companion object {
-        fun fromString(decodedInterval: String): ExerciseInterval {
-            val times = decodedInterval.split(":")
-            return ExerciseInterval(times[0].toInt(), times[1].toInt())
-        }
-    }
 }

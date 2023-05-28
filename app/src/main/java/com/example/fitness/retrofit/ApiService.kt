@@ -5,7 +5,7 @@ import com.example.fitness.data.remotesource.model.UserExercise
 import com.example.fitness.data.remotesource.model.UserProgram
 import com.example.fitness.data.remotesource.model.UserProgramExercise
 import com.example.fitness.data.remotesource.model.UserProgramSession
-import com.example.fitness.registration.model.User
+import com.example.fitness.screens.registration.model.User
 import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.Body
@@ -68,23 +68,8 @@ interface ApiService {
     @Headers(
         "Authorization: $API_KEY"
     )
-    @GET("user_exercises")
-    suspend fun getUserExercises(
-        @Query("user_id") user_id: Int): List<UserExercise>
-
-    @Headers(
-        "Authorization: $API_KEY"
-    )
     @POST("user_program_exercises")
     suspend fun putUserProgramExercise(@Body userProgramExercise: UserProgramExercise): UserProgramExercise
-
-    @Headers(
-        "Authorization: $API_KEY"
-    )
-    @GET("user_program_exercises")
-    suspend fun getUserProgramExercises(
-        @Query("user_program_id") user_program_id: Int): List<UserProgramExercise>
-
 
     @Headers(
         "Authorization: $API_KEY"

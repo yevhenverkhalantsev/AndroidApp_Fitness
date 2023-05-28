@@ -1,2 +1,224 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">Fitness</string>
+    <string name="phoneNumber">Phone number</string>
+    <string name="register">Create profile</string>
+    <string name="error_phone_number_is_incorrect">Phone number is incorrect</string>
+    <string name="error_phone_number_is_already_registered">Phone number is already registered</string>
+    <string name="error_no_internet_connection">No internet connection</string>
+    <string name="error_unknown_try_again_later">Something went wrong, try again later</string>
+    <string name="categories">Categories</string>
+    <string name="titleWorkout">Workouts</string>
+    <string name="getStarted">Get Started</string>
+    <string name="loseWeight">Lose Weight</string>
+    <string name="beachReady">Beach Ready</string>
+    <string name="getFit">Get Fit</string>
+    <string name="exercises">Exercises</string>
+    <string name="start">Start workout</string>
+    <string name="amount_from_amount">%1$d\\%2$d</string>
+    <string name="timeset">15</string>
+    <string name="next_exrcise_placeholder">Next exercise: %1$s</string>
+    <string name="rest">Rest</string>
+    <string name="exercise_finished">Exercises finished!</string>
+    <string name="login">Sign in</string>
+    <string name="alreadyHaveAnAccount">Have you registered?</string>
+    <string name="welcome">Welcome to Fitness app</string>
+    <string name="select_program_for_plan">Select your program for %1$s</string>
+    <string name="save_program">Save program</string>
+    <string name="no_programs_saved">Oops, u have no programs saved ;(\n Try to add some and then come back!</string>
+    <string name="select_program">Please, select program which u want to save</string>
+    <string name="success_exercises_added">Program saved successfully</string>
+    <string name="you_already_have_this_program_saved">You already have this program saved!</string>
+    <string name="user_id_placeholder">Current User: %1$d</string>
+    <string name="error_unknown">Unknown mistake</string>
+    <string name="error_phone_number_is_empty">Insert your number</string>
+    <string name="plan">Plan</string>
+    <string name="tuesday">T</string>
+    <string name="wednesday">W</string>
+    <string name="thirsday">T</string>
+    <string name="friday">F</string>
+    <string name="saturday">S</string>
+    <string name="monday">M</string>
+    <string name="sunday">S</string>
+    <string name="profile">Profile</string>
+
+    <string-array name="loose_weight_exercises">
+        <item>Push-ups</item>
+        <item>Sit-ups</item>
+        <item>Lungs</item>
+        <item>Squats</item>
+        <item>The plank</item>
+        <item>Outcome</item>
+        <item>Jumping jacks</item>
+        <item>Burpees</item>
+        <item>Mountain climbers</item>
+        <item>Jump squats</item>
+    </string-array>
+
+
+
+
+    <string-array name="description_of_loose_weight_exercises">
+        <item>Place your hands on the ground slightly wider than shoulder-width apart, and keep your body straight and tight with your toes on the ground. Slowly lower your body to the ground by bending your elbows, then push back up until your arms are extended. Repeat.
+        </item>
+        <item>Lie on your back with your knees bent and your feet on the ground. Place your hands behind your head and lift your head, neck and shoulders off the ground while tightening your abdominal muscles. Then slowly lower yourself back down and repeat.
+        </item>
+        <item>Stand with your feet shoulder-width apart, and take a step forward with one leg. Bend both knees and lower your body to the ground, then push back up to the starting position. Switch legs and repeat.
+        </item>
+        <item>Stand with your feet slightly wider than shoulder-width apart, then lower your body down as if you were going to sit on a chair. Keeping your back straight and your chest open, then push back up to the starting position.
+        </item>
+        <item>Lie on your stomach with your elbows bent and your forearms on the ground. Lift your body up and support your weight on your forearms and toes, keeping your body straight and tight. Hold this position for as long as possible.
+        </item>
+        <item>Stand with your feet shoulder-width apart, and take a step forward with one leg. Lower your body until your front knee is bent at a 90-degree angle and your back knee almost hits the ground. Then push back up to the starting position and switch legs.
+        </item>
+        <item>Stand with your feet together and your arms down by your sides. Then jump up and bounce your feet out while raising your arms out to the sides, then jump back to the starting position.
+        </item>
+        <item>Stand with your feet shoulder-width apart, then lower your body into a push-up position. Do a push-up, then jump up so that your feet land close to your hands. Stand up and jump with your arms above your head.
+        </item>
+        <item>Start in a plank position with elbows bent and forearms on the ground. Pull one knee up to your chest, then quickly switch to the other leg, as if you are "running" in a plank position.
+        </item>
+        <item>Stand with your feet slightly wider than shoulder width apart, and lower your body down as if you are going to sit on a chair. When you get back up, jump as high as possible and land softly back into the squat position. Repeat. This exercise can help improve strength and conditioning at the same time.</item>
+    </string-array>
+
+    <string-array name="get_started_exercises">
+        <item>Chair squats</item>
+        <item>Leg extensions</item>
+        <item>Wall push-ups</item>
+        <item>Overhead presses</item>
+        <item>Cat and cows</item>
+        <item>Back rotations</item>
+        <item>Quadraplex</item>
+        <item>Side leg raises</item>
+        <item>Bridge pose</item>
+        <item>Donkey kicks</item>
+    </string-array>
+
+    <string-array name="description_of_get_started_exercises">
+        <item>Sit and stand up from a chair while keeping your feet hip-width apart and weight on your heels. Keep your chest up and your core engaged. Repeat.
+        </item>
+        <item>Sit on a chair and extend one leg straight out in front of you, then lower it back down. Alternate legs.
+        </item>
+        <item>Stand facing a wall with your hands at shoulder height, then bend your elbows to lower your chest towards the wall and push back up.
+        </item>
+        <item>Stand with your feet hip-width apart, hold dumbbells at shoulder height, then press them straight up overhead. Lower them back down and repeat.
+        </item>
+        <item>Start on hands and knees, arch your back up towards the ceiling then slowly lower it down, lifting your head and tailbone.
+        </item>
+        <item>Lie on your back with knees bent, rotate your legs to one side, then back up, alternating sides.
+        </item>
+        <item>Start on hands and knees, extend one leg and the opposite arm straight out, hold briefly, then switch sides.
+        </item>
+        <item>Lie on your side, lift top leg straight up towards ceiling, then lower it back down. Repeat on both sides.
+        </item>
+        <item>Lie on your back with knees bent, lift your hips up towards the ceiling, then lower back down.
+        </item>
+        <item>Start on hands and knees, lift one leg straight up towards the ceiling while keeping your knee bent, then lower it back down. Repeat on both sides.
+        </item>
+    </string-array>
+
+    <string-array name="beach_ready_exercises">
+        <item>Jumping oblique twists</item>
+        <item>Rear lunges</item>
+        <item>Leg fits</item>
+        <item>Lateral lunges</item>
+        <item>Jump rope hops</item>
+        <item>Pulsing squats</item>
+        <item>High knees running in place</item>
+        <item>Single legged deadlifts</item>
+        <item>V sit-ups</item>
+        <item>Fly jacks</item>
+    </string-array>
+
+    <string-array name="description_of_beach_ready_exercises">
+        <item>Stand with feet hip-width apart, jump and twist your lower body to one side while touching your opposite hand to the ground, then jump and twist to the other side.
+        </item>
+        <item>Stand with feet hip-width apart, take a step back with one foot and lower your back knee towards the ground, then stand back up and repeat on the other side.
+        </item>
+        <item>Lie on your back with legs straight up in the air, then lower them down towards the ground without touching it, and bring them back up.
+        </item>
+        <item>Stand with feet hip-width apart, take a big step to one side and lower into a lunge, then stand back up and repeat on the other side.
+        </item>
+        <item>Pretend to jump rope while hopping on both feet, alternating between single hops and double hops.
+        </item>
+        <item>Stand with feet hip-width apart, lower into a squat position and pulse up and down slightly without standing all the way back up.
+        </item>
+        <item>Run in place while lifting your knees up high towards your chest.
+        </item>
+        <item>Stand on one leg and hinge forward at the hips while lifting the opposite leg straight out behind you, then return to standing and repeat on the other leg.
+        </item>
+        <item>Sit on the ground with legs straight out in front of you, lift your legs and upper body up while reaching towards your feet to form a V shape, then lower back down.
+        </item>
+        <item>Stand with feet together and arms at your sides, jump and spread your arms and legs out to the side like a jumping jack, then jump and bring them back together.
+        </item>
+    </string-array>
+
+    <string-array name="get_fit_exercises">
+        <item>Plie squat jumps</item>
+        <item>Table top toe grabs</item>
+        <item>Jump tucks</item>
+        <item>Plank with arm and leg raises</item>
+        <item>180 degree jump squats</item>
+        <item>Arm haulers</item>
+        <item>Triceps dips</item>
+        <item>Supermans</item>
+        <item>Pistol squat burpees:</item>
+        <item>Pike push-ups</item>
+    </string-array>
+
+    <string-array name="description_of_get_fit_exercises">
+        <item>Stand with feet wider than hip-width apart, toes turned out, lower into a squat position, then jump up explosively and land back in the squat position.
+        </item>
+        <item>Start on hands and knees with a flat back, lift one leg straight out behind you and reach the opposite arm to grab your toes, then switch sides.
+        </item>
+        <item>Stand with feet hip-width apart, jump and tuck your knees towards your chest, then land softly and repeat.
+        </item>
+        <item>Start in a plank position, lift one arm and the opposite leg straight out, hold briefly, then switch sides.
+        </item>
+        <item>Stand with feet hip-width apart, lower into a squat position, then jump and rotate 180 degrees in the air before landing back in the squat position.
+        </item>
+        <item>Lie on your stomach with arms extended straight out in front of you, lift arms and legs up off the ground, hold briefly, then lower back down.
+        </item>
+        <item>Sit on the ground with your hands behind you, fingers pointing towards your body, lift your hips off the ground and lower them down by bending your elbows, then push back up.
+        </item>
+        <item>Lie on your stomach with arms and legs extended straight out, lift arms and legs up off the ground, hold briefly, then lower back down.
+        </item>
+        <item>Stand with feet hip-width apart, lower into a pistol squat position, jump back into a plank position, jump back up and stand back up, then repeat on the other leg.
+        </item>
+        <item>Start in a downward dog position, lower your head towards the ground by bending your elbows, then push back up.
+        </item>
+    </string-array>
+
+
+    <string-array name="get_started">
+        <item>Get Started</item>
+    </string-array>
+
+    <string-array name="lose_weight">
+        <item>Lose Weight</item>
+    </string-array>
+
+    <string-array name="beach_ready">
+        <item>Beach Ready</item>
+    </string-array>
+
+    <string-array name="get_fit">
+        <item>Get Fit</item>
+    </string-array>
+
+    <string-array name="get_started_description">
+        <item>This workout is designed to get you started on your fitness journey.</item>
+    </string-array>
+
+    <string-array name="lose_weight_description">
+        <item>This workout is designed to help you lose weight.</item>
+    </string-array>
+
+    <string-array name="beach_ready_description">
+        <item>This workout is designed to get you ready for the beach.</item>
+    </string-array>
+
+    <string-array name="get_fit_description">
+        <item>This workout is designed to help you get fit.</item>
+    </string-array>
+
+</resources>

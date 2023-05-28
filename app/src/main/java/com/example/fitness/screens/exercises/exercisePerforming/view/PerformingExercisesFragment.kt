@@ -1,11 +1,7 @@
 package com.example.fitness.screens.exercises.exercisePerforming.view
 
-import android.content.Context
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.os.Handler
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,21 +20,18 @@ import javax.inject.Inject
 class PerformingExercisesFragment : DaggerFragment() {
     private var _binding : FragmentPerformingExercisesBinding? = null
     private val binding get() = _binding!!
-    //private val performingViewModel : PerformingViewModel by lazy { PerformingViewModel() }
     @Inject lateinit var factory: ViewModelProvider.Factory
     private val viewModel: ExercisesViewModel by activityViewModels( factoryProducer = { factory } )
     @Inject lateinit var exercisesManager: ExerciseManager
     private val performingExercises: List<PerformingExercise>
         by lazy { exercisesManager.getPerformingExercises(viewModel.selectedCategory) }
     private var currentExerciseId = 0
-    private lateinit var progressBarHandler: Handler
     private var isStopped = true
     private var isExercise = true
 
 
     private val spendTime: CountDownTimer by lazy { object : CountDownTimer(9000000, 1000) {
         override fun onTick(millisUntilFinished: Long) {
-            Log.i("PerformingExercisesFragment", "isStopped = $isStopped onn tick: $millisUntilFinished")
             if (!isStopped) {
                 binding.exerciseProgressBar.progress = binding.exerciseProgressBar.progress + 1
                 binding.timeText.text = (binding.timeText.text.toString().toInt() - 1).toString()
@@ -53,7 +46,6 @@ class PerformingExercisesFragment : DaggerFragment() {
         }
 
         override fun onFinish() {
-            Log.i("PerformingExercisesFragment", "onFinish: ")
         } } }
 
     private fun startCurrentRest() {
@@ -76,12 +68,6 @@ class PerformingExercisesFragment : DaggerFragment() {
     }
 
 
-
-    override fun onAttach(context: Context) {
-        //(requireContext().applicationContext as MainApplication).appComponent.inject(this)
-        super.onAttach(context)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentPerformingExercisesBinding.bind(view)
@@ -89,7 +75,6 @@ class PerformingExercisesFragment : DaggerFragment() {
         initListeners()
         showCurrentExercise()
 
-        Log.i("PerformingExercisesFragment", "performingExercises: $performingExercises")
 
     }
 
@@ -117,16 +102,14 @@ class PerformingExercisesFragment : DaggerFragment() {
 
     private fun initListeners() {
         binding.playexercise.setOnClickListener {
-            if (isStopped) {
+            isStopped = if (isStopped) {
                 binding.playexercise.setImageDrawable(AppCompatResources.getDrawable(requireContext(), R.drawable.pause))
-                isStopped = false
+                false
             } else {
                 binding.playexercise.setImageDrawable(AppCompatResources.getDrawable(requireContext(), R.drawable.play))
-                isStopped = true
+                true
             }
-            //1 set image drawable pause
-            //2 set exercise
-            //3 launch progress bar
+
         }
 
         binding.repeatexercise.setOnClickListener {
@@ -144,7 +127,7 @@ class PerformingExercisesFragment : DaggerFragment() {
         binding.exerciseName.text = getString(R.string.exercise_finished)
         binding.timeText.visibility = View.INVISIBLE
         spendTime.cancel()
-        //@TODO
+
     }
 
 

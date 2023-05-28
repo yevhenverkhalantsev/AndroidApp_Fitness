@@ -1,216 +1,223 @@
 <resources>
     <string name="app_name">Fitness</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="phoneNumber">Telefonnummer</string>
     <string name="register">Opprett profil</string>
-    <string name="error_phone_number_is_incorrect">Phone number is incorrect</string>
-    <string name="error_phone_number_is_already_registered">Phone number is already registered</string>
-    <string name="error_no_internet_connection">No internet connection</string>
-    <string name="error_unknown_try_again_later">Something went wrong, try again later</string>
-    <string name="titleWorkout">Workouts</string>
-    <string name="categories">Categories</string>
-    <string name="getStarted">Get Started</string>
-    <string name="loseWeight">Lose Weight</string>
-    <string name="beachReady">Beach Ready</string>
-    <string name="getFit">Get Fit</string>
-    <string name="exercises">Exercises</string>
-    <string name="start">Start workout</string>
+    <string name="error_phone_number_is_incorrect">Telefonnummeret er feil</string>
+    <string name="error_phone_number_is_already_registered">Telefonnummeret er allerede registrert</string>
+    <string name="error_no_internet_connection">Ingen internettforbindelse</string>
+    <string name="error_unknown_try_again_later">Noe gikk galt. Prøv igjen senere</string>
+    <string name="titleWorkout">Treninger</string>
+    <string name="categories">Kategorier</string>
+    <string name="getStarted">Kom i gang</string>
+    <string name="loseWeight">Gå ned i vekt</string>
+    <string name="beachReady">Strandklar</string>
+    <string name="getFit">Komme i form</string>
+    <string name="exercises">Øvelser</string>
+    <string name="start">Start treningen</string>
     <string name="amount_from_amount">%1$d\\%2$d</string>
     <string name="timeset">15</string>
-    <string name="next_exrcise_placeholder">Next exercise: %1$s</string>
-    <string name="rest">Rest</string>
-    <string name="exercise_finished">Exercises finished!</string>
-    <string name="login">logg inn</string>
+    <string name="next_exrcise_placeholder">Neste øvelse: %1$s</string>
+    <string name="rest">Hvile</string>
+    <string name="exercise_finished">Øvelsene er ferdige!</string>
+    <string name="login">Logg på</string>
     <string name="alreadyHaveAnAccount">Har du registrert?</string>
     <string name="welcome">Velkommen til Fitness app</string>
-    <string name="select_program_for_plan">Select your program for %1$s</string>
-    <string name="save_program">Save program</string>
-    <string name="no_programs_saved">Oops, u have no programs saved ;(\n Try to add some and then come back!</string>
-    <string name="select_program">Please, select program which u want to save</string>
-    <string name="success_exercises_added">Program saved successfully</string>
-    <string name="you_already_have_this_program_saved">You already have this program saved!</string>
-    <string name="user_id_placeholder">Current User: %1$d</string>
+    <string name="select_program_for_plan">Velg ditt program for %1$s</string>
+    <string name="save_program">Lagre programmet</string>
+    <string name="no_programs_saved">Oops, du har ingen programmer lagret ;(\n Prøv å legge til noen og kom tilbake!</string>
+    <string name="select_program">Vennligst velg programmet du vil lagre</string>
+    <string name="success_exercises_added">Programmet ble lagret</string>
+    <string name="you_already_have_this_program_saved">Du har allerede dette programmet lagret!</string>
+    <string name="user_id_placeholder">Nåværende bruker: %1$d</string>
     <string name="error_unknown">Ukjent feil</string>
     <string name="error_phone_number_is_empty">Taste inn nummeret</string>
+    <string name="plan">Plan</string>
+    <string name="tuesday">T</string>
+    <string name="wednesday">O</string>
+    <string name="thirsday">T</string>
+    <string name="friday">F</string>
+    <string name="saturday">L</string>
+    <string name="monday">M</string>
+    <string name="sunday">S</string>
+    <string name="profile">Profil</string>
 
     <string-array name="loose_weight_exercises">
-        <item>Push-ups</item>
+        <item>Armhevninger</item>
         <item>Sit-ups</item>
-        <item>Lungs</item>
-        <item>Squats</item>
-        <item>The plank</item>
-        <item>Outcome</item>
-        <item>Jumping jacks</item>
+        <item>Lungene</item>
+        <item>Knebøy</item>
+        <item>Planken</item>
+        <item>Utfall</item>
+        <item>Hoppeknekter</item>
         <item>Burpees</item>
-        <item>Mountain climbers</item>
-        <item>Jump squats</item>
+        <item>Fjellklatrere</item>
+        <item>Hopp knebøy</item>
     </string-array>
 
 
 
 
     <string-array name="description_of_loose_weight_exercises">
-        <item>Place your hands on the ground slightly wider than shoulder-width apart, and keep your body straight and tight with your toes on the ground. Slowly lower your body to the ground by bending your elbows, then push back up until your arms are extended. Repeat.
+        <item>Plasser hendene på bakken litt bredere enn skulderbreddes avstand, og hold kroppen rett og stram med tærne i bakken. Senk kroppen sakte til bakken ved å bøye albuene, og skyv deretter opp igjen til armene strekker seg. Gjenta.
         </item>
-        <item>Lie on your back with your knees bent and your feet on the ground. Place your hands behind your head and lift your head, neck and shoulders off the ground while tightening your abdominal muscles. Then slowly lower yourself back down and repeat.
+        <item>Ligg på ryggen med bøyde knær og føttene på bakken. Plasser hendene bak hodet og løft hodet, nakken og skuldrene fra bakken mens du strammer magemusklene. Senk deg deretter sakte ned igjen og gjenta.
         </item>
-        <item>Stand with your feet shoulder-width apart, and take a step forward with one leg. Bend both knees and lower your body to the ground, then push back up to the starting position. Switch legs and repeat.
+        <item>Stå med føttene i skulderbreddes avstand, og ta et skritt fremover med ett ben. Bøy begge knærne og senk kroppen til bakken, og skyv deretter tilbake til startposisjonen. Bytt ben og gjenta.
         </item>
-        <item>Stand with your feet slightly wider than shoulder-width apart, then lower your body down as if you were going to sit on a chair. Keeping your back straight and your chest open, then push back up to the starting position.
+        <item>Stå med føttene litt bredere enn skulderbreddes avstand, og senk deretter kroppen ned som om du skulle sitte på en stol. Hold ryggen rett og brystet åpent, og skyv deretter tilbake til startposisjonen.
         </item>
-        <item>Lie on your stomach with your elbows bent and your forearms on the ground. Lift your body up and support your weight on your forearms and toes, keeping your body straight and tight. Hold this position for as long as possible.
+        <item>Ligg på magen med bøyde albuer og underarmene på bakken. Løft kroppen opp og støtt vekten på underarmene og tærne, hold kroppen rett og stram. Hold denne posisjonen så lenge som mulig.
         </item>
-        <item>Stand with your feet shoulder-width apart, and take a step forward with one leg. Lower your body until your front knee is bent at a 90-degree angle and your back knee almost hits the ground. Then push back up to the starting position and switch legs.
+        <item>Stå med føttene i skulderbreddes avstand, og ta et skritt fremover med ett ben. Senk kroppen til fremre kne er bøyd i en 90-graders vinkel og bakre kne nesten treffer bakken. Skyv deretter tilbake til startposisjonen og bytt ben.
         </item>
-        <item>Stand with your feet together and your arms down by your sides. Then jump up and bounce your feet out while raising your arms out to the sides, then jump back to the starting position.
+        <item>Stå med føttene samlet og armene ned langs sidene. Hopp deretter opp og sprett føttene ut mens du løfter armene ut til sidene, og hopp deretter tilbake til startposisjonen.
         </item>
-        <item>Stand with your feet shoulder-width apart, then lower your body into a push-up position. Do a push-up, then jump up so that your feet land close to your hands. Stand up and jump with your arms above your head.
+        <item>Stå med føttene i skulderbreddes avstand, og senk deretter kroppen ned i en push-up-stilling. Gjør en push-up, og hopp deretter opp slik at føttene lander tett inntil hendene. Stå opp og hopp med armene over hodet.
         </item>
-        <item>Start in a plank position with elbows bent and forearms on the ground. Pull one knee up to your chest, then quickly switch to the other leg, as if you are "running" in a plank position.
+        <item>Start i en plankeposisjon med bøyde albuer og underarmer på bakken. Trekk det ene kneet opp til brystet, bytt deretter raskt til det andre benet, som om du "løper" i plankeposisjon.
         </item>
-        <item>Stand with your feet slightly wider than shoulder width apart, and lower your body down as if you are going to sit on a chair. When you get back up, jump as high as possible and land softly back into the squat position. Repeat. This exercise can help improve strength and conditioning at the same time.</item>
+        <item>Stå med føttene litt bredere enn skulderbreddes avstand, og senk kroppen ned som om du skal sitte på en stol. Når du kommer deg opp igjen, hopp så høyt som mulig og land mykt tilbake i knebøy. Gjenta. Denne øvelsen kan bidra til å forbedre styrke og kondisjon på samme tid.</item>
     </string-array>
 
     <string-array name="get_started_exercises">
-        <item>Chair squats</item>
-        <item>Leg extensions</item>
-        <item>Wall push-ups</item>
-        <item>Overhead presses</item>
-        <item>Cat and cows</item>
-        <item>Back rotations</item>
+        <item>Knebøy på stol</item>
+        <item>Len extensions</item>
+        <item>Push-ups på veggen</item>
+        <item>Overheadpresser</item>
+        <item>Katt og kyr</item>
+        <item>Tilbake rotasjoner</item>
         <item>Quadraplex</item>
-        <item>Side leg raises</item>
-        <item>Bridge pose</item>
-        <item>Donkey kicks</item>
+        <item>Sidebeinhevinger</item>
+        <item>Broposering</item>
+        <item>Eselspark</item>
     </string-array>
 
     <string-array name="description_of_get_started_exercises">
-        <item>Sit and stand up from a chair while keeping your feet hip-width apart and weight on your heels. Keep your chest up and your core engaged. Repeat.
+        <item>Sitt og reis deg fra en stol mens du holder føttene i hoftebreddes avstand og vekten på hælene. Hold brystet oppe og kjernen engasjert. Gjenta.
         </item>
-        <item>Sit on a chair and extend one leg straight out in front of you, then lower it back down. Alternate legs.
+        <item>Sitt på en stol og strekk det ene benet rett ut foran deg, og senk det deretter ned igjen. Alternative ben.
         </item>
-        <item>Stand facing a wall with your hands at shoulder height, then bend your elbows to lower your chest towards the wall and push back up.
+        <item>Stå vendt mot en vegg med hendene i skulderhøyde, bøy deretter albuene for å senke brystet mot veggen og skyv opp igjen.
         </item>
-        <item>Stand with your feet hip-width apart, hold dumbbells at shoulder height, then press them straight up overhead. Lower them back down and repeat.
+        <item>Stå med føttene i hoftebreddes avstand, hold manualer i skulderhøyde, og trykk dem rett opp over hodet. Senk dem ned igjen og gjenta.
         </item>
-        <item>Start on hands and knees, arch your back up towards the ceiling then slowly lower it down, lifting your head and tailbone.
+        <item>Start på hender og knær, bøy ryggen opp mot taket og senk den sakte ned, løft hodet og halebeinet.
         </item>
-        <item>Lie on your back with knees bent, rotate your legs to one side, then back up, alternating sides.
+        <item>Ligg på ryggen med bøyde knær, roter bena til den ene siden, og rygg deretter opp, vekslende side.
         </item>
-        <item>Start on hands and knees, extend one leg and the opposite arm straight out, hold briefly, then switch sides.
+        <item>Start på hender og knær, strekk ut det ene benet og den motsatte armen rett ut, hold kort og bytt side.
         </item>
-        <item>Lie on your side, lift top leg straight up towards ceiling, then lower it back down. Repeat on both sides.
+        <item>Legg på siden, løft det øverste benet rett opp mot taket, og senk det deretter ned igjen. Gjenta på begge sider.
         </item>
-        <item>Lie on your back with knees bent, lift your hips up towards the ceiling, then lower back down.
+        <item>Ligg på ryggen med bøyde knær, løft hoftene opp mot taket, senk deretter ryggen ned.
         </item>
-        <item>Start on hands and knees, lift one leg straight up towards the ceiling while keeping your knee bent, then lower it back down. Repeat on both sides.
+        <item>Start på hender og knær, løft det ene benet rett opp mot taket mens du holder kneet bøyd, og senk det ned igjen. Gjenta på begge sider.
         </item>
     </string-array>
 
     <string-array name="beach_ready_exercises">
-        <item>Jumping oblique twists</item>
-        <item>Rear lunges</item>
-        <item>Leg fits</item>
-        <item>Lateral lunges</item>
-        <item>Jump rope hops</item>
-        <item>Pulsing squats</item>
-        <item>High knees running in place</item>
-        <item>Single legged deadlifts</item>
+        <item>Hoppende skrå vendinger</item>
+        <item>Bakre utfall</item>
+        <item>Bein passer</item>
+        <item>Laterale utfall</item>
+        <item>Hoppetau</item>
+        <item>Pulsende knebøy</item>
+        <item>Høye knær løper på plass</item>
+        <item>Enbeint markløft</item>
         <item>V sit-ups</item>
         <item>Fly jacks</item>
     </string-array>
 
     <string-array name="description_of_beach_ready_exercises">
-        <item>Stand with feet hip-width apart, jump and twist your lower body to one side while touching your opposite hand to the ground, then jump and twist to the other side.
+        <item>Stå med føttene i hoftebreddes avstand, hopp og vri underkroppen til den ene siden mens du berører den motsatte hånden mot bakken, og hopp og vri til den andre siden.
         </item>
-        <item>Stand with feet hip-width apart, take a step back with one foot and lower your back knee towards the ground, then stand back up and repeat on the other side.
+        <item>Stå med føttene i hoftebreddes avstand, ta et skritt tilbake med den ene foten og senk det bakre kneet mot bakken, reis deg så opp igjen og gjenta på den andre siden.
         </item>
-        <item>Lie on your back with legs straight up in the air, then lower them down towards the ground without touching it, and bring them back up.
+        <item>Ligg på ryggen med bena rett opp i luften, senk dem deretter ned mot bakken uten å berøre den, og ta dem opp igjen.
         </item>
-        <item>Stand with feet hip-width apart, take a big step to one side and lower into a lunge, then stand back up and repeat on the other side.
+        <item>Stå med føttene i hoftebreddes avstand, ta et stort skritt til den ene siden og senk ned i et utfall, reis deg så opp igjen og gjenta på den andre siden.
         </item>
-        <item>Pretend to jump rope while hopping on both feet, alternating between single hops and double hops.
+        <item>Lat som om du hopper i tau mens du hopper på begge føttene, og veksler mellom enkelthopp og dobbelthopp.
         </item>
-        <item>Stand with feet hip-width apart, lower into a squat position and pulse up and down slightly without standing all the way back up.
+        <item>Stå med føttene i hoftebreddes avstand, senk ned i knebøy og puls litt opp og ned uten å stå helt opp igjen.
         </item>
-        <item>Run in place while lifting your knees up high towards your chest.
+        <item>Løp på plass mens du løfter knærne høyt opp mot brystet.
         </item>
-        <item>Stand on one leg and hinge forward at the hips while lifting the opposite leg straight out behind you, then return to standing and repeat on the other leg.
+        <item>Stå på ett ben og heng forover i hoftene mens du løfter det motsatte benet rett ut bak deg, og gå tilbake til stående og gjenta på det andre benet.
         </item>
-        <item>Sit on the ground with legs straight out in front of you, lift your legs and upper body up while reaching towards your feet to form a V shape, then lower back down.
+        <item>Sitt på bakken med bena rett ut foran deg, løft bena og overkroppen opp mens du strekker deg mot føttene for å danne en V-form, senk deretter nedover.
         </item>
-        <item>Stand with feet together and arms at your sides, jump and spread your arms and legs out to the side like a jumping jack, then jump and bring them back together.
+        <item>Stå med føttene sammen og armene langs sidene, hopp og spre armene og bena ut til siden som en hoppeknekt, hopp deretter og bring dem sammen igjen.
         </item>
     </string-array>
 
     <string-array name="get_fit_exercises">
-        <item>Plie squat jumps</item>
-        <item>Table top toe grabs</item>
+        <item>Plie knebøy hopp</item>
+        <item>Tåhåndtak på bord</item>
         <item>Jump tucks</item>
-        <item>Plank with arm and leg raises</item>
-        <item>180 degree jump squats</item>
-        <item>Arm haulers</item>
-        <item>Triceps dips</item>
+        <item>Planke med arm- og benløft</item>
+        <item>180 graders hoppknebøy</item>
+        <item>Våpendragere</item>
+        <item>Triceps-fall</item>
         <item>Supermans</item>
         <item>Pistol squat burpees:</item>
-        <item>Pike push-ups</item>
+        <item>Gjedde push-ups</item>
     </string-array>
 
     <string-array name="description_of_get_fit_exercises">
-        <item>Stand with feet wider than hip-width apart, toes turned out, lower into a squat position, then jump up explosively and land back in the squat position.
+        <item>Stå med føttene bredere enn hoftebredde fra hverandre, tærne vendt ut, senk ned i knebøy, hopp deretter eksplosivt opp og land tilbake i knebøy.
         </item>
-        <item>Start on hands and knees with a flat back, lift one leg straight out behind you and reach the opposite arm to grab your toes, then switch sides.
+        <item>Start på hender og knær med flat rygg, løft det ene benet rett ut bak deg og nå den motsatte armen for å ta tak i tærne, og bytt side.
         </item>
-        <item>Stand with feet hip-width apart, jump and tuck your knees towards your chest, then land softly and repeat.
+        <item>Stå med føttene i hoftebreddes avstand, hopp og trekk knærne mot brystet, land deretter mykt og gjenta.
         </item>
-        <item>Start in a plank position, lift one arm and the opposite leg straight out, hold briefly, then switch sides.
+        <item>Start i en plankeposisjon, løft den ene armen og det motsatte beinet rett ut, hold kort, og bytt side.
         </item>
-        <item>Stand with feet hip-width apart, lower into a squat position, then jump and rotate 180 degrees in the air before landing back in the squat position.
+        <item>Stå med føttene i hoftebreddes avstand, senk ned i knebøy, hopp og roter 180 grader i luften før du lander tilbake i knebøy.
         </item>
-        <item>Lie on your stomach with arms extended straight out in front of you, lift arms and legs up off the ground, hold briefly, then lower back down.
+        <item>Ligg på magen med armene strukket rett ut foran deg, løft armer og ben opp fra bakken, hold kort og senk deretter tilbake.
         </item>
-        <item>Sit on the ground with your hands behind you, fingers pointing towards your body, lift your hips off the ground and lower them down by bending your elbows, then push back up.
+        <item>Sitt på bakken med hendene bak deg, fingrene peker mot kroppen, løft hoftene fra bakken og senk dem ned ved å bøye albuene, og skyv deretter opp igjen.
         </item>
-        <item>Lie on your stomach with arms and legs extended straight out, lift arms and legs up off the ground, hold briefly, then lower back down.
+        <item>Ligg på magen med armer og ben strukket rett ut, løft armer og ben opp fra bakken, hold kort og senk deretter tilbake.
         </item>
-        <item>Stand with feet hip-width apart, lower into a pistol squat position, jump back into a plank position, jump back up and stand back up, then repeat on the other leg.
+        <item>Stå med føttene i hoftebreddes avstand, senk ned i en knebøy med pistol, hopp tilbake til en plankeposisjon, hopp opp igjen og reis deg opp igjen, og gjenta deretter på det andre benet.
         </item>
-        <item>Start in a downward dog position, lower your head towards the ground by bending your elbows, then push back up.
+        <item>Start i en nedadgående hundeposisjon, senk hodet mot bakken ved å bøye albuene, og skyv deretter opp igjen.
         </item>
     </string-array>
 
 
     <string-array name="get_started">
-        <item>Get Started</item>
+        <item>Kom i gang</item>
     </string-array>
 
     <string-array name="lose_weight">
-        <item>Lose Weight</item>
+        <item>Gå ned i vekt</item>
     </string-array>
 
     <string-array name="beach_ready">
-        <item>Beach Ready</item>
+        <item>Strandklar</item>
     </string-array>
 
     <string-array name="get_fit">
-        <item>Get Fit</item>
+        <item>Komme i form</item>
     </string-array>
 
     <string-array name="get_started_description">
-    <item>This workout is designed to get you started on your fitness journey.</item>
+    <item>Denne treningsøkten er designet for å komme i gang med treningsreisen.</item>
     </string-array>
 
     <string-array name="lose_weight_description">
-    <item>This workout is designed to help you lose weight.</item>
+    <item>Denne treningsøkten er laget for å hjelpe deg å gå ned i vekt.</item>
     </string-array>
 
     <string-array name="beach_ready_description">
-    <item>This workout is designed to get you ready for the beach.</item>
+    <item>Denne treningsøkten er designet for å gjøre deg klar for stranden.</item>
     </string-array>
 
     <string-array name="get_fit_description">
-    <item>This workout is designed to help you get fit.</item>
+    <item>Denne treningen er laget for å hjelpe deg med å komme i form.</item>
     </string-array>
 
 </resources>

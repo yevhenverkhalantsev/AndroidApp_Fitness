@@ -1,8 +1,6 @@
 package com.example.fitness.screens.exercises.workouts
 
-import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +8,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.fitness.R
-import com.example.fitness.screens.context.application.MainApplication
 import com.example.fitness.databinding.FragmentWorkoutsBinding
 import com.example.fitness.screens.exercises.workouts.model.Category
 import com.example.fitness.screens.exercises.workouts.viewmodel.ExercisesViewModel
@@ -23,11 +20,6 @@ class WorkoutsFragment : DaggerFragment() {
     private val binding get() = _binding!!
     @Inject lateinit var factory: ViewModelProvider.Factory
     private val viewModel: ExercisesViewModel by activityViewModels( factoryProducer = { factory } )
-
-    override fun onAttach(context: Context) {
-        //(requireActivity().applicationContext as MainApplication).appComponent.inject(this)
-        super.onAttach(context)
-    }
 
 
     override fun onCreateView(

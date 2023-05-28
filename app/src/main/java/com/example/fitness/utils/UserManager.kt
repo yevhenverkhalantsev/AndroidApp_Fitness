@@ -2,7 +2,6 @@ package com.example.fitness.utils
 
 import android.content.Context
 import androidx.fragment.app.Fragment
-import kotlin.properties.Delegates
 
 class UserManager {
     companion object {

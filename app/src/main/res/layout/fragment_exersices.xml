@@ -4,46 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".screens.exercises.someother.view.ExercisesFragment">
+    tools:context=".screens.exercises.exercises.view.ExercisesFragment">
 
-    <ImageView
-        android:id="@+id/back_arrow"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:src="@drawable/back"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-    <TextView
-        android:id="@+id/title_workouts"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/back_arrow" />
-
-    <ImageView
-        android:id="@+id/image_workouts"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_workouts" />
 
     <Button
         android:id="@+id/start_button"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="@string/start"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_workouts" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/exercises"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/exercises"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/start_button" />
+
 
     <ImageView
         android:id="@+id/add_exercises"
@@ -62,7 +35,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/exercises" />
+        app:layout_constraintTop_toBottomOf="@+id/start_button" />
 
 
     <com.airbnb.lottie.LottieAnimationView

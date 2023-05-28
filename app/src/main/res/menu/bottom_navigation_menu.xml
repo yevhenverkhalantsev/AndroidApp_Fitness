@@ -4,26 +4,16 @@
     <item
         android:id="@+id/planFragment"
         android:icon="@drawable/iconplan"
-        android:title="Plan" />
+        android:title="@string/plan" />
 
     <item
         android:id="@+id/workoutsFragment"
         android:icon="@drawable/iconworkouts"
-        android:title="Workouts" />
-
-    <item
-        android:id="@+id/activityFragment"
-        android:icon="@drawable/iconactivity"
-        android:title="Activity" />
-
-    <item
-        android:id="@+id/leaguesFragment"
-        android:icon="@drawable/iconleagues"
-        android:title="Leagues" />
+        android:title="@string/titleWorkout" />
 
     <item
         android:id="@+id/profileFragment"
         android:icon="@drawable/iconprofile"
-        android:title="Profile" />
+        android:title="@string/profile" />
 
 </menu>

@@ -2,12 +2,12 @@ package com.example.fitness.utils
 
 import android.content.Context
 import com.example.fitness.R
-import com.example.fitness.description.model.ExerciseWithDescription
+import com.example.fitness.screens.description.model.ExerciseWithDescription
 import com.example.fitness.di.annotations.ApplicationContext
 import com.example.fitness.screens.exercises.exercisePerforming.model.ExerciseInterval
 import com.example.fitness.screens.exercises.exercisePerforming.model.PerformingExercise
-import com.example.fitness.screens.exercises.someother.model.UserExerciseUI
-import com.example.fitness.screens.exercises.someother.model.Exercise
+import com.example.fitness.screens.exercises.exercises.model.UserExerciseUI
+import com.example.fitness.screens.exercises.exercises.model.Exercise
 import com.example.fitness.screens.exercises.workouts.model.Category
 import javax.inject.Inject
 import javax.inject.Singleton
